@@ -1,0 +1,112 @@
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Development
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: D:\GoRepo\HyperPaySolution\Go.Service.Solution\Go.LTEWallet.Services
+warn: Microsoft.EntityFrameworkCore.Query[10103]
+      The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results.
+warn: Microsoft.EntityFrameworkCore.Query[10103]
+      The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results.
+fail: Microsoft.EntityFrameworkCore.Database.Command[0]
+      2021-10-26 00:57:47.767400 ThreadID:19  (ERROR)   OracleRelationalCommand.ExecuteReaderAsync() :  Oracle.ManagedDataAccess.Client.OracleException (0x80004005): ORA-00904: "p"."serial_number": invalid identifier
+         at OracleInternal.ServiceObjects.OracleConnectionImpl.VerifyExecution(Int32& cursorId, Boolean bThrowArrayBindRelatedErrors, SqlStatementType sqlStatementType, Int32 arrayBindCount, OracleException& exceptionForArrayBindDML, Boolean& hasMoreRowsInDB, Boolean bFirstIterationDone)
+         at OracleInternal.ServiceObjects.OracleCommandImpl.ExecuteReader(String commandText, OracleParameterCollection paramColl, CommandType commandType, OracleConnectionImpl connectionImpl, OracleDataReaderImpl& rdrImpl, Int32 longFetchSize, Int64 clientInitialLOBFS, OracleDependencyImpl orclDependencyImpl, Int64[] scnForExecution, Int64[]& scnFromExecution, OracleParameterCollection& bindByPositionParamColl, Boolean& bBindParamPresent, Int64& internalInitialLOBFS, Int64 internalInitialJSONFS, OracleException& exceptionForArrayBindDML, OracleConnection connection, OracleLogicalTransaction& oracleLogicalTransaction, IEnumerable`1 adrianParsedStmt, Boolean isDescribeOnly, Boolean isFromEF)
+         at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteReader(Boolean requery, Boolean fillRequest, CommandBehavior behavior)
+         at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteDbDataReader(CommandBehavior behavior)
+         at System.Data.Common.DbCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+      --- End of stack trace from previous location where exception was thrown ---
+         at Oracle.EntityFrameworkCore.Storage.Internal.OracleRelationalCommandBuilderFactory.OracleRelationalCommandBuilder.OracleRelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+fail: Microsoft.EntityFrameworkCore.Database.Command[20102]
+      Failed executing DbCommand (2,675ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+      SELECT "p"."serial_number"
+      FROM (
+          select tuv_voucher.serial_number from tuv_voucher_details_tbl tuv_voucher, tuv_voucher_order_details_tbl tuv_order where tuv_order.voucher_plan =8016049689 and tuv_voucher.voucher_status in (select tuv_card_status_id from TUV_ALLOWED_STATUS_TBL) and tuv_order.Voucher_Expiry_Date > sysdate and tuv_voucher.tuv_order_id = tuv_order.tuv_order_id and rownum < 2
+      ) "p"
+      where rownum <= 1
+fail: Microsoft.EntityFrameworkCore.Infrastructure[0]
+      2021-10-26 00:57:48.617968 ThreadID:19  (ERROR)   OracleExecutionStrategy.ExecuteAsync() :  Oracle.ManagedDataAccess.Client.OracleException (0x80004005): ORA-00904: "p"."serial_number": invalid identifier
+         at OracleInternal.ServiceObjects.OracleConnectionImpl.VerifyExecution(Int32& cursorId, Boolean bThrowArrayBindRelatedErrors, SqlStatementType sqlStatementType, Int32 arrayBindCount, OracleException& exceptionForArrayBindDML, Boolean& hasMoreRowsInDB, Boolean bFirstIterationDone)
+         at OracleInternal.ServiceObjects.OracleCommandImpl.ExecuteReader(String commandText, OracleParameterCollection paramColl, CommandType commandType, OracleConnectionImpl connectionImpl, OracleDataReaderImpl& rdrImpl, Int32 longFetchSize, Int64 clientInitialLOBFS, OracleDependencyImpl orclDependencyImpl, Int64[] scnForExecution, Int64[]& scnFromExecution, OracleParameterCollection& bindByPositionParamColl, Boolean& bBindParamPresent, Int64& internalInitialLOBFS, Int64 internalInitialJSONFS, OracleException& exceptionForArrayBindDML, OracleConnection connection, OracleLogicalTransaction& oracleLogicalTransaction, IEnumerable`1 adrianParsedStmt, Boolean isDescribeOnly, Boolean isFromEF)
+         at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteReader(Boolean requery, Boolean fillRequest, CommandBehavior behavior)
+         at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteDbDataReader(CommandBehavior behavior)
+         at System.Data.Common.DbCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+      --- End of stack trace from previous location where exception was thrown ---
+         at Oracle.EntityFrameworkCore.Storage.Internal.OracleRelationalCommandBuilderFactory.OracleRelationalCommandBuilder.OracleRelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+         at Oracle.EntityFrameworkCore.Storage.Internal.OracleRelationalCommandBuilderFactory.OracleRelationalCommandBuilder.OracleRelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+         at Oracle.EntityFrameworkCore.Storage.Internal.OracleRelationalCommandBuilderFactory.OracleRelationalCommandBuilder.OracleRelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(DbContext _, Boolean result, CancellationToken cancellationToken)
+         at Oracle.EntityFrameworkCore.Storage.Internal.OracleExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+fail: Microsoft.EntityFrameworkCore.Query[10100]
+      An exception occurred while iterating over the results of a query for context type 'Go.LTEWallet.Services.Data.CADBContext'.
+      Oracle.ManagedDataAccess.Client.OracleException (0x80004005): ORA-00904: "p"."serial_number": invalid identifier
+         at OracleInternal.ServiceObjects.OracleConnectionImpl.VerifyExecution(Int32& cursorId, Boolean bThrowArrayBindRelatedErrors, SqlStatementType sqlStatementType, Int32 arrayBindCount, OracleException& exceptionForArrayBindDML, Boolean& hasMoreRowsInDB, Boolean bFirstIterationDone)
+         at OracleInternal.ServiceObjects.OracleCommandImpl.ExecuteReader(String commandText, OracleParameterCollection paramColl, CommandType commandType, OracleConnectionImpl connectionImpl, OracleDataReaderImpl& rdrImpl, Int32 longFetchSize, Int64 clientInitialLOBFS, OracleDependencyImpl orclDependencyImpl, Int64[] scnForExecution, Int64[]& scnFromExecution, OracleParameterCollection& bindByPositionParamColl, Boolean& bBindParamPresent, Int64& internalInitialLOBFS, Int64 internalInitialJSONFS, OracleException& exceptionForArrayBindDML, OracleConnection connection, OracleLogicalTransaction& oracleLogicalTransaction, IEnumerable`1 adrianParsedStmt, Boolean isDescribeOnly, Boolean isFromEF)
+         at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteReader(Boolean requery, Boolean fillRequest, CommandBehavior behavior)
+         at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteDbDataReader(CommandBehavior behavior)
+         at System.Data.Common.DbCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+      --- End of stack trace from previous location where exception was thrown ---
+         at Oracle.EntityFrameworkCore.Storage.Internal.OracleRelationalCommandBuilderFactory.OracleRelationalCommandBuilder.OracleRelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+         at Oracle.EntityFrameworkCore.Storage.Internal.OracleRelationalCommandBuilderFactory.OracleRelationalCommandBuilder.OracleRelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+         at Oracle.EntityFrameworkCore.Storage.Internal.OracleRelationalCommandBuilderFactory.OracleRelationalCommandBuilder.OracleRelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(DbContext _, Boolean result, CancellationToken cancellationToken)
+         at Oracle.EntityFrameworkCore.Storage.Internal.OracleExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+Oracle.ManagedDataAccess.Client.OracleException (0x80004005): ORA-00904: "p"."serial_number": invalid identifier
+   at OracleInternal.ServiceObjects.OracleConnectionImpl.VerifyExecution(Int32& cursorId, Boolean bThrowArrayBindRelatedErrors, SqlStatementType sqlStatementType, Int32 arrayBindCount, OracleException& exceptionForArrayBindDML, Boolean& hasMoreRowsInDB, Boolean bFirstIterationDone)
+   at OracleInternal.ServiceObjects.OracleCommandImpl.ExecuteReader(String commandText, OracleParameterCollection paramColl, CommandType commandType, OracleConnectionImpl connectionImpl, OracleDataReaderImpl& rdrImpl, Int32 longFetchSize, Int64 clientInitialLOBFS, OracleDependencyImpl orclDependencyImpl, Int64[] scnForExecution, Int64[]& scnFromExecution, OracleParameterCollection& bindByPositionParamColl, Boolean& bBindParamPresent, Int64& internalInitialLOBFS, Int64 internalInitialJSONFS, OracleException& exceptionForArrayBindDML, OracleConnection connection, OracleLogicalTransaction& oracleLogicalTransaction, IEnumerable`1 adrianParsedStmt, Boolean isDescribeOnly, Boolean isFromEF)
+   at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteReader(Boolean requery, Boolean fillRequest, CommandBehavior behavior)
+   at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+--- End of stack trace from previous location where exception was thrown ---
+   at Oracle.EntityFrameworkCore.Storage.Internal.OracleRelationalCommandBuilderFactory.OracleRelationalCommandBuilder.OracleRelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Oracle.EntityFrameworkCore.Storage.Internal.OracleRelationalCommandBuilderFactory.OracleRelationalCommandBuilder.OracleRelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Oracle.EntityFrameworkCore.Storage.Internal.OracleRelationalCommandBuilderFactory.OracleRelationalCommandBuilder.OracleRelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(DbContext _, Boolean result, CancellationToken cancellationToken)
+   at Oracle.EntityFrameworkCore.Storage.Internal.OracleExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+fail: Microsoft.EntityFrameworkCore.Database.Command[0]
+      2021-10-26 01:01:30.456699 ThreadID:24  (ERROR)   OracleRelationalCommand.ExecuteReaderAsync() :  Oracle.ManagedDataAccess.Client.OracleException (0x80004005): ORA-00904: "p"."serial_number": invalid identifier
+         at OracleInternal.ServiceObjects.OracleConnectionImpl.VerifyExecution(Int32& cursorId, Boolean bThrowArrayBindRelatedErrors, SqlStatementType sqlStatementType, Int32 arrayBindCount, OracleException& exceptionForArrayBindDML, Boolean& hasMoreRowsInDB, Boolean bFirstIterationDone)
+         at OracleInternal.ServiceObjects.OracleCommandImpl.ExecuteReader(String commandText, OracleParameterCollection paramColl, CommandType commandType, OracleConnectionImpl connectionImpl, OracleDataReaderImpl& rdrImpl, Int32 longFetchSize, Int64 clientInitialLOBFS, OracleDependencyImpl orclDependencyImpl, Int64[] scnForExecution, Int64[]& scnFromExecution, OracleParameterCollection& bindByPositionParamColl, Boolean& bBindParamPresent, Int64& internalInitialLOBFS, Int64 internalInitialJSONFS, OracleException& exceptionForArrayBindDML, OracleConnection connection, OracleLogicalTransaction& oracleLogicalTransaction, IEnumerable`1 adrianParsedStmt, Boolean isDescribeOnly, Boolean isFromEF)
+         at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteReader(Boolean requery, Boolean fillRequest, CommandBehavior behavior)
+         at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteDbDataReader(CommandBehavior behavior)
+         at System.Data.Common.DbCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+      --- End of stack trace from previous location where exception was thrown ---
+         at Oracle.EntityFrameworkCore.Storage.Internal.OracleRelationalCommandBuilderFactory.OracleRelationalCommandBuilder.OracleRelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+fail: Microsoft.EntityFrameworkCore.Database.Command[20102]
+      Failed executing DbCommand (555ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+      SELECT "p"."serial_number"
+      FROM (
+          select tuv_voucher.serial_number from tuv_voucher_details_tbl tuv_voucher, tuv_voucher_order_details_tbl tuv_order where tuv_order.voucher_plan =8016049689 and tuv_voucher.voucher_status in (select tuv_card_status_id from TUV_ALLOWED_STATUS_TBL) and tuv_order.Voucher_Expiry_Date > sysdate and tuv_voucher.tuv_order_id = tuv_order.tuv_order_id and rownum < 2
+      ) "p"
+      where rownum <= 1
+fail: Microsoft.EntityFrameworkCore.Infrastructure[0]
+      2021-10-26 01:01:30.740075 ThreadID:24  (ERROR)   OracleExecutionStrategy.ExecuteAsync() :  Oracle.ManagedDataAccess.Client.OracleException (0x80004005): ORA-00904: "p"."serial_number": invalid identifier
+         at OracleInternal.ServiceObjects.OracleConnectionImpl.VerifyExecution(Int32& cursorId, Boolean bThrowArrayBindRelatedErrors, SqlStatementType sqlStatementType, Int32 arrayBindCount, OracleException& exceptionForArrayBindDML, Boolean& hasMoreRowsInDB, Boolean bFirstIterationDone)
+         at OracleInternal.ServiceObjects.OracleCommandImpl.ExecuteReader(String commandText, OracleParameterCollection paramColl, CommandType commandType, OracleConnectionImpl connectionImpl, OracleDataReaderImpl& rdrImpl, Int32 longFetchSize, Int64 clientInitialLOBFS, OracleDependencyImpl orclDependencyImpl, Int64[] scnForExecution, Int64[]& scnFromExecution, OracleParameterCollection& bindByPositionParamColl, Boolean& bBindParamPresent, Int64& internalInitialLOBFS, Int64 internalInitialJSONFS, OracleException& exceptionForArrayBindDML, OracleConnection connection, OracleLogicalTransaction& oracleLogicalTransaction, IEnumerable`1 adrianParsedStmt, Boolean isDescribeOnly, Boolean isFromEF)
+         at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteReader(Boolean requery, Boolean fillRequest, CommandBehavior behavior)
+         at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteDbDataReader(CommandBehavior behavior)
+         at System.Data.Common.DbCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+      --- End of stack trace from previous location where exception was thrown ---
+         at Oracle.EntityFrameworkCore.Storage.Internal.OracleRelationalCommandBuilderFactory.OracleRelationalCommandBuilder.OracleRelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+         at Oracle.EntityFrameworkCore.Storage.Internal.OracleRelationalCommandBuilderFactory.OracleRelationalCommandBuilder.OracleRelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+         at Oracle.EntityFrameworkCore.Storage.Internal.OracleRelationalCommandBuilderFactory.OracleRelationalCommandBuilder.OracleRelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(DbContext _, Boolean result, CancellationToken cancellationToken)
+         at Oracle.EntityFrameworkCore.Storage.Internal.OracleExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+fail: Microsoft.EntityFrameworkCore.Query[10100]
+      An exception occurred while iterating over the results of a query for context type 'Go.LTEWallet.Services.Data.CADBContext'.
+      Oracle.ManagedDataAccess.Client.OracleException (0x80004005): ORA-00904: "p"."serial_number": invalid identifier
+         at OracleInternal.ServiceObjects.OracleConnectionImpl.VerifyExecution(Int32& cursorId, Boolean bThrowArrayBindRelatedErrors, SqlStatementType sqlStatementType, Int32 arrayBindCount, OracleException& exceptionForArrayBindDML, Boolean& hasMoreRowsInDB, Boolean bFirstIterationDone)
+         at OracleInternal.ServiceObjects.OracleCommandImpl.ExecuteReader(String commandText, OracleParameterCollection paramColl, CommandType commandType, OracleConnectionImpl connectionImpl, OracleDataReaderImpl& rdrImpl, Int32 longFetchSize, Int64 clientInitialLOBFS, OracleDependencyImpl orclDependencyImpl, Int64[] scnForExecution, Int64[]& scnFromExecution, OracleParameterCollection& bindByPositionParamColl, Boolean& bBindParamPresent, Int64& internalInitialLOBFS, Int64 internalInitialJSONFS, OracleException& exceptionForArrayBindDML, OracleConnection connection, OracleLogicalTransaction& oracleLogicalTransaction, IEnumerable`1 adrianParsedStmt, Boolean isDescribeOnly, Boolean isFromEF)
+         at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteReader(Boolean requery, Boolean fillRequest, CommandBehavior behavior)
+         at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteDbDataReader(CommandBehavior behavior)
+         at System.Data.Common.DbCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+      --- End of stack trace from previous location where exception was thrown ---
+         at Oracle.EntityFrameworkCore.Storage.Internal.OracleRelationalCommandBuilderFactory.OracleRelationalCommandBuilder.OracleRelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+         at Oracle.EntityFrameworkCore.Storage.Internal.OracleRelationalCommandBuilderFactory.OracleRelationalCommandBuilder.OracleRelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+         at Oracle.EntityFrameworkCore.Storage.Internal.OracleRelationalCommandBuilderFactory.OracleRelationalCommandBuilder.OracleRelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(DbContext _, Boolean result, CancellationToken cancellationToken)
+         at Oracle.EntityFrameworkCore.Storage.Internal.OracleExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+Oracle.ManagedDataAccess.Client.OracleExc

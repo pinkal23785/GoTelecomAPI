@@ -1,0 +1,49 @@
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Development
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: D:\GoRepo\HyperPaySolution\Go.Service.Solution\Go.LTEWallet.Services
+warn: Microsoft.EntityFrameworkCore.Model.Validation[30000]
+      No type was specified for the decimal property 'WALLET_BALANCE' on entity type 'CommissionWalletBalance'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType()', specify precision and scale using 'HasPrecision()' or configure a value converter using 'HasConversion()'.
+warn: Microsoft.EntityFrameworkCore.Query[10103]
+      The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results.
+fail: Microsoft.EntityFrameworkCore.Database.Command[0]
+      2021-10-23 01:21:58.464187 ThreadID:11  (ERROR)   OracleRelationalCommand.ExecuteReader() :  Oracle.ManagedDataAccess.Client.OracleException (0x80004005): ORA-00904: "p"."PlanPrice_wth_VAT": invalid identifier
+         at OracleInternal.ServiceObjects.OracleConnectionImpl.VerifyExecution(Int32& cursorId, Boolean bThrowArrayBindRelatedErrors, SqlStatementType sqlStatementType, Int32 arrayBindCount, OracleException& exceptionForArrayBindDML, Boolean& hasMoreRowsInDB, Boolean bFirstIterationDone)
+         at OracleInternal.ServiceObjects.OracleCommandImpl.ExecuteReader(String commandText, OracleParameterCollection paramColl, CommandType commandType, OracleConnectionImpl connectionImpl, OracleDataReaderImpl& rdrImpl, Int32 longFetchSize, Int64 clientInitialLOBFS, OracleDependencyImpl orclDependencyImpl, Int64[] scnForExecution, Int64[]& scnFromExecution, OracleParameterCollection& bindByPositionParamColl, Boolean& bBindParamPresent, Int64& internalInitialLOBFS, Int64 internalInitialJSONFS, OracleException& exceptionForArrayBindDML, OracleConnection connection, OracleLogicalTransaction& oracleLogicalTransaction, IEnumerable`1 adrianParsedStmt, Boolean isDescribeOnly, Boolean isFromEF)
+         at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteReader(Boolean requery, Boolean fillRequest, CommandBehavior behavior)
+         at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteDbDataReader(CommandBehavior behavior)
+         at System.Data.Common.DbCommand.ExecuteReader()
+         at Oracle.EntityFrameworkCore.Storage.Internal.OracleRelationalCommandBuilderFactory.OracleRelationalCommandBuilder.OracleRelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+fail: Microsoft.EntityFrameworkCore.Database.Command[20102]
+      Failed executing DbCommand (873ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+      SELECT "p"."PLAN_ID", "p"."PROD_ID", "p"."PlanPrice_wth_VAT", "p"."RN"
+      FROM (
+          SELECT * FROM(SELECT DEAL.PLAN_ID, PA.PROD_ID, round((PA.attrib_value * 1.15), 0) PlanPrice_wth_VAT,row_number() over(partition by DEAL.PLAN_ID order by PA.attrib_value desc) RN FROM PROD_CATALOG_PRODUCT_TBL PRO, prod_catalog_deal_tbl DEAL,prod_catalog_attributes_tbl PA WHERE pro.deal_id = DEAL.DEAL_ID AND PA.PROD_ID = pro.prod_id AND pa.attrib_name = '/event/billing/product/fee/cycle/cycle_forward_arrear' AND DEAL.PLAN_ID in ('8015944692')) WHERE RN > 1
+      ) "p"
+      where rownum <= 1
+fail: Microsoft.EntityFrameworkCore.Infrastructure[0]
+      2021-10-23 01:21:58.850736 ThreadID:11  (ERROR)   OracleExecutionStrategy.Execute() :  Oracle.ManagedDataAccess.Client.OracleException (0x80004005): ORA-00904: "p"."PlanPrice_wth_VAT": invalid identifier
+         at OracleInternal.ServiceObjects.OracleConnectionImpl.VerifyExecution(Int32& cursorId, Boolean bThrowArrayBindRelatedErrors, SqlStatementType sqlStatementType, Int32 arrayBindCount, OracleException& exceptionForArrayBindDML, Boolean& hasMoreRowsInDB, Boolean bFirstIterationDone)
+         at OracleInternal.ServiceObjects.OracleCommandImpl.ExecuteReader(String commandText, OracleParameterCollection paramColl, CommandType commandType, OracleConnectionImpl connectionImpl, OracleDataReaderImpl& rdrImpl, Int32 longFetchSize, Int64 clientInitialLOBFS, OracleDependencyImpl orclDependencyImpl, Int64[] scnForExecution, Int64[]& scnFromExecution, OracleParameterCollection& bindByPositionParamColl, Boolean& bBindParamPresent, Int64& internalInitialLOBFS, Int64 internalInitialJSONFS, OracleException& exceptionForArrayBindDML, OracleConnection connection, OracleLogicalTransaction& oracleLogicalTransaction, IEnumerable`1 adrianParsedStmt, Boolean isDescribeOnly, Boolean isFromEF)
+         at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteReader(Boolean requery, Boolean fillRequest, CommandBehavior behavior)
+         at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteDbDataReader(CommandBehavior behavior)
+         at System.Data.Common.DbCommand.ExecuteReader()
+         at Oracle.EntityFrameworkCore.Storage.Internal.OracleRelationalCommandBuilderFactory.OracleRelationalCommandBuilder.OracleRelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+         at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+         at Oracle.EntityFrameworkCore.Storage.Internal.OracleExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+fail: Microsoft.EntityFrameworkCore.Query[10100]
+      An exception occurred while iterating over the results of a query for context type 'Go.LTEWallet.Services.Data.CADBContext'.
+      Oracle.ManagedDataAccess.Client.OracleException (0x80004005): ORA-00904: "p"."PlanPrice_wth_VAT": invalid identifier
+         at OracleInternal.ServiceObjects.OracleConnectionImpl.VerifyExecution(Int32& cursorId, Boolean bThrowArrayBindRelatedErrors, SqlStatementType sqlStatementType, Int32 arrayBindCount, OracleException& exceptionForArrayBindDML, Boolean& hasMoreRowsInDB, Boolean bFirstIterationDone)
+         at OracleInternal.ServiceObjects.OracleCommandImpl.ExecuteReader(String commandText, OracleParameterCollection paramColl, CommandType commandType, OracleConnectionImpl connectionImpl, OracleDataReaderImpl& rdrImpl, Int32 longFetchSize, Int64 clientInitialLOBFS, OracleDependencyImpl orclDependencyImpl, Int64[] scnForExecution, Int64[]& scnFromExecution, OracleParameterCollection& bindByPositionParamColl, Boolean& bBindParamPresent, Int64& internalInitialLOBFS, Int64 internalInitialJSONFS, OracleException& exceptionForArrayBindDML, OracleConnection connection, OracleLogicalTransaction& oracleLogicalTransaction, IEnumerable`1 adrianParsedStmt, Boolean isDescribeOnly, Boolean isFromEF)
+         at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteReader(Boolean requery, Boolean fillRequest, CommandBehavior behavior)
+         at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteDbDataReader(CommandBehavior behavior)
+         at System.Data.Common.DbCommand.ExecuteReader()
+         at Oracle.EntityFrameworkCore.Storage.Internal.OracleRelationalCommandBuilderFactory.OracleRelationalCommandBuilder.OracleRelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+         at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+         at Oracle.EntityFrameworkCore.Storage.Internal.OracleExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+         at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+Oracle.ManagedDataAccess.Client.OracleException (0x80004005): ORA-00904: "p"."PlanPrice_wth_VAT": invalid identifier
+   at OracleInternal.ServiceObjects.OracleConnectionImpl.VerifyExecution(Int32& cursorId, Boolean bThrowArrayBindRelatedErrors, SqlStatementType sqlStatementType, Int32 arrayBindCount, OracleException& exceptionForArrayBindDML, Boolean&

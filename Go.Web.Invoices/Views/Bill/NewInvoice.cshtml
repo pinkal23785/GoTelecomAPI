@@ -1,0 +1,339 @@
+﻿@model Go.Web.Invoices.Data.Entities.CustomerInvoice
+@{
+    ViewData["Title"] = "Simplified Tax Invoice";
+}
+
+
+
+@if (Model != null)
+{
+<div class="container">
+
+    <div class="row mt-3 mb-3">
+        <div class="col-12 p-0 ">
+            <button type="button" class="btn-sm btn-secondary float-right m-0" onclick="javascript: Print();">Print</button>
+        </div>
+    </div>
+    <div id="invoice" class="row page-details">
+        <div class="col-12">
+            <div class="row mb-3 p-0 align-items-center logo-container">
+                <div class="col-5 float-left p-0">
+                    <div class="img-width">
+                        <img src="~/images/new_logo.png" class="logo" />
+                    </div>
+                </div>
+                <div class="col-2"></div>
+                <div class="col-5 m-0 p-0 text-right">
+                    <div class="arabic-title">فـاتورة ضريبية مبسطة</div>
+                    <div class="english-title">SIMPLIFIED TAX INVOICE</div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm pr-1 pl-0">
+                    <div class="row mr-3 justify-content-center mr-bill-table">
+                        <div class="col-12 bill-table">
+                            <table>
+                                <tr>
+                                    <th>Bill Number</th>
+                                    <td>@Model.BILL_NO</td>
+                                    <th class="text-right" dir="rtl">رقم الفاتورة</th>
+                                </tr>
+                                <tr>
+                                    <th>VAT Number</th>
+                                    <td>300114291900003</td>
+                                    <th class="text-right" dir="rtl">
+                                        الرقم الضريبي
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th>Bill Date</th>
+                                    <td>@Model.END_T</td>
+                                    <th class="text-right" dir="rtl">تاريخ الفاتورة</th>
+                                </tr>
+                                <tr>
+                                    <th>Bill Duration</th>
+                                    <td>@Model.START_T.ToString() to @DateTime.Parse(Model.END_T).AddDays(-1).ToString("dd-MMM-yy")</td>
+                                    <th class="text-right" dir="rtl">فترة الفاتورة</th>
+                                </tr>
+                                <tr>
+                                    <th>Due Date</th>
+                                    <td>@Model.DUE_T</td>
+                                    <th class="text-right" dir="rtl">تاريخ استحقاق</th>
+                                </tr>
+                                <tr>
+                                    <th>Credit Limit (SAR)</th>
+                                    <td>NA</td>
+                                    <th class="text-right" dir="rtl"><span>الحد الائتماني</span> (ر.س) </th>
+                                </tr>
+                                <tr>
+                                    <th>Account No.</th>
+                                    <td>@Model.ACCOUNT_NO</td>
+                                    <th class="text-right" dir="rtl">رقم الحساب</th>
+                                </tr>
+                                <tr>
+                                    <th>Addressed to</th>
+                                    <td class="fix-box">@Model.CUSTOMER_NAME</td>
+                                    <th class="text-right" dir="rtl">لصاحب الحساب</th>
+                                </tr>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm m-0 p-0">
+                    @*<img src="~/images/go-banner.png" class="float-right img-width img-fluid banner" />*@
+                    <img src="~/images/go-banner.png" class="image-width" />
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-5 p-0 invoice-summary-end">INVOICE SUMMARY</div>
+                <div class="col-2"></div>
+                <div class="col-5 invoice-summary-arabic">ملخص الفاتورة</div>
+            </div>
+
+            <div class="row mb-5">
+                <div class="col-12 p-0">
+                    <table class="tbl-invoice">
+                        <tr>
+                            <td class="box-content">
+                                <table class=" tbl-invoice-dtl">
+                                    <tr>
+                                        <td class="back-color outstanding">
+                                            <div class="arabic" dir="rtl">المبلغ المستحق</div>
+                                            <div class="text-eng">
+                                                Outstanding
+                                                Balance
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Model.TOTAL_DUE SAR</td>
+                                    </tr>
+                                </table>
+
+                            </td>
+                            <td rowspan="2" class="align-middle operator">
+                                =
+                            </td>
+                            <td class="box-content">
+                                <table class=" tbl-invoice-dtl">
+                                    <tr>
+                                        <td class="content">
+                                            <div class="arabic" dir="rtl">المدفوعات</div>
+                                            <div class="text-eng">
+                                                Payments
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Model.PAID_AMOUNT SAR</td>
+                                    </tr>
+                                </table>
+
+                            </td>
+                            <td rowspan="2" class="align-middle operator">
+                                -
+                            </td>
+                            <td class="box-content">
+                                <table class=" tbl-invoice-dtl">
+                                    <tr>
+                                        <td class="content">
+                                            <div class="arabic" dir="rtl">الفاتورة السابقة</div>
+                                            <div class="text-eng">
+                                                Previous
+                                                Due Amount
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Model.PREVIOUS_TOTAL SAR</td>
+                                    </tr>
+                                </table>
+
+                            </td>
+                            <td rowspan="2" class="align-middle operator">
+                                +
+                            </td>
+                            <td class="box-content">
+                                <table class=" tbl-invoice-dtl">
+                                    <tr>
+                                        <td class="content">
+                                            <div class="arabic" dir="rtl">
+                                                <span dir="rtl">
+                                                    الفاتورة الحالية
+                                                </span>
+                                                <span dir="rtl">
+                                                    مع ضريبة القيمة
+
+                                                </span>
+                                                <span>
+                                                    المضافة 15%
+
+                                                </span>
+                                            </div>
+                                            <div class="text-eng">
+                                                Current Bill <br />
+                                                with
+                                                VAT 15%
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Model.CURRENT_TOTAL SAR</td>
+                                    </tr>
+                                </table>
+
+                            </td>
+                            <td rowspan="2" class="align-middle operator">
+                                =
+                            </td>
+                            <td class="box-content">
+                                <table class=" tbl-invoice-dtl">
+                                    <tr>
+                                        <td class="content">
+                                            <div class="arabic" dir="rtl">
+                                                <span dir="rtl">
+                                                    ضريبة القيمة
+                                                </span>
+                                                <span dir="rtl">
+                                                    المضافة 15%
+                                                </span>
+                                            </div>
+                                            <div class="text-eng">
+                                                VAT 15%
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Model.CYCLE_TAX SAR</td>
+                                    </tr>
+                                </table>
+
+                            </td>
+                            <td rowspan="2" class="align-middle operator">
+                                +
+                            </td>
+                            <td class="box-content">
+                                <table class=" tbl-invoice-dtl">
+                                    <tr>
+                                        <td class="content">
+                                            <div class="arabic" dir="rtl">
+                                                الفاتورة الحالية
+                                            </div>
+                                            <div class="text-eng">
+                                                Current Bill
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Model.CURRENT_TOTAL_WV SAR</td>
+                                    </tr>
+                                </table>
+
+                            </td>
+
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="row mb-3 mt-3">
+                <div class="col-5 p-0 invoice-summary-end">MONTHLY SUBSCRIPTION DETAILS</div>
+                <div class="col-2"></div>
+                <div class="col-5 p-0 invoice-summary-arabic" dir="rtl">ملخص الاشتراك الشهري</div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-12 p-0">
+                    <table class=" tbl-monthly">
+                        <tr class="tbl-monthly-header">
+                            <td>
+                                <div class="arabic" dir="rtl">سعر الخدمة (ر.س)</div>
+                                <div class="text-eng">Service Price (SAR)</div>
+                            </td>
+                            <td>
+                                <div class="arabic" dir="rtl">إلى</div>
+                                <div class="text-eng">To</div>
+                            </td>
+                            <td>
+                                <div class="arabic" dir="rtl">من</div>
+                                <div class="text-eng">From</div>
+                            </td>
+                            <td>
+                                <div class="arabic" dir="rtl">وصف الخدمة</div>
+                                <div class="text-eng">Service Description</div>
+                            </td>
+                            <td>
+                                <div class="arabic" dir="rtl">الرقم التسلسلي</div>
+                                <div class="text-eng">Serial No.</div>
+                            </td>
+                        </tr>
+                        <tr class="tbl-monthly-dtl">
+                            <td>@Model.CURRENT_TOTAL_WV SAR</td>
+
+                            <td>@DateTime.Parse(Model.END_T).AddDays(-1).ToString("dd-MMM-yy")</td>
+                            <td>@Model.START_T.ToString()</td>
+                            <td>
+                                @Model.PLAN_NAME
+                            </td>
+                            <td>1</td>
+                        </tr>
+                        <tr class="tbl-monthly-footer">
+                            <td colspan="5">
+                                <table class=" tbl-monthly-footer-dtl" cellspacing="5">
+                                    <tr>
+                                        <td>Total Excluding VAT (SAR)</td>
+                                        <td><div>@Model.CURRENT_TOTAL_WV  SAR</div></td>
+                                        <td dir="rtl">اجمالي غير شامل الضريبة (ر.س)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Total VAT  (SAR)</td>
+                                        <td><div>@Model.CYCLE_TAX SAR</div></td>
+                                        <td dir="rtl">ضريبة القيمة المضافة (ر.س)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Total Including VAT  (SAR)</td>
+                                        <td><div> @Model.CURRENT_TOTAL SAR</div></td>
+                                        <td dir="rtl">اجمالي شامل الضريبة (ر.س)</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-12 p-0">
+                    <img src="~/images/02.png" width="100%" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-2 pt-3">
+                    <img src="@ViewBag.QrCodeUri" class="border" width="100%" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 p-0 text-center footer-text">
+                    17777 | www.go.com.sa
+                </div>
+            </div>
+            <br clear=all style="mso-special-character:page-break;page-break-before:always">
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-12 p-0">
+            <button type="button" class="btn-sm btn-secondary float-right m-0" onclick="javascript: Print();">Print</button>
+        </div>
+    </div>
+
+</div>
+
+}

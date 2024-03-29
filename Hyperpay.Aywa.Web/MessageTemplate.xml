@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Template>
+	<English>OTP for one time use.
+OTP: {0}
+to buy AYWA Card {1}</English>
+
+	<Arabic>رمز التحقق لمرة واحدة
+رمز :{0}
+لـ : شراء بطاقة أيوا في {1}
+
+	</Arabic>
+
+</Template>

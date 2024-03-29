@@ -1,0 +1,162 @@
+﻿@{
+    Layout = null;
+}
+<div id="complex-ajax">
+    @Html.Partial("_PartialHeader")
+    @if(ViewBag.Lang=="en"){
+    <ul class="steps">
+        <li class="step step-success">
+            <a asp-action="Home" asp-controller="Aywa" asp-route-Lang="@ViewBag.Lang">
+
+                <div class="step-content">
+                    <span class="step-circle">1</span>
+                    <span class="step-text">Choose Card</span>
+                </div>
+
+            </a>
+        </li>
+        <li class="step step-active">
+            <div class="step-content">
+                <span class="step-circle">2</span>
+                <span class="step-text">View Card Details</span>
+            </div>
+        </li>
+        <li class="step">
+            <div class="step-content">
+                <span class="step-circle">3</span>
+                <span class="step-text">Verification</span>
+            </div>
+        </li>
+        <li class="step">
+            <div class="step-content">
+                <span class="step-circle">4</span>
+                <span class="step-text">Pay</span>
+            </div>
+        </li>
+        <li class="step ">
+            <div class="step-content">
+                <span class="step-circle">5</span>
+                <span class="step-text">Thank You</span>
+            </div>
+        </li>
+    </ul>
+}
+else
+{
+    <ul class="steps fontArabic">
+        <li class="step">
+            <div class="step-content">
+                <span class="step-circle">5</span>
+                <span class="step-text">شكرا لك </span>
+            </div>
+        </li>
+        <li class="step">
+            <div class="step-content">
+                <span class="step-circle">4</span>
+                <span class="step-text">الدفع</span>
+            </div>
+        </li>
+        <li class="step">
+            <div class="step-content">
+                <span class="step-circle">3</span>
+                <span class="step-text">تحقق</span>
+            </div>
+        </li>
+        <li class="step step-active">
+            <div class="step-content">
+                <span class="step-circle">2</span>
+                <span class="step-text">معلومات البطاقة </span>
+            </div>
+        </li>
+        <li class="step step-success">
+            <a asp-action="Home" asp-controller="Aywa" asp-route-Lang="@ViewBag.Lang">
+                <div class="step-content">
+                    <span class="step-circle">1</span>
+                    <span class="step-text">اختر البطاقة</span>
+                </div>
+            </a>
+        </li>
+    </ul>
+}
+    <div class="d-flex justify-content-center mt-5">
+        @{string imageName = ViewBag.NAME + ".png"; }
+        <table style="width:70%" class="ml-5">
+            @if(ViewBag.Lang=="en"){
+
+            <tr>
+
+                <td colspan="6" style="width:60%;"><img src="~/images/@imageName" style="width: 80%;" /></td>
+
+                <td>
+                    <table class="card-detail">
+                        <tr><td class="card-title">Aywa Card Type</td></tr>
+                        <tr><td class="card-value">@ViewBag.Name</td></tr>
+
+                        <tr><td class="card-title">Amount Before VAT</td></tr>
+                        <tr><td class="card-value">SAR @ViewBag.CardAmount</td></tr>
+
+                        <tr> <td class="card-title">VAT</td></tr>
+                        <tr><td class="card-value">SAR @ViewBag.VAT</td></tr>
+                        <tr><td class="card-title">Total Amount</td></tr>
+                        <tr><td class="card-value">SAR @ViewBag.TotalAmount</td></tr>
+                        <tr>
+                            <td class="card-button">
+                                <form id="otpform" asp-controller="Aywa" asp-action="Index" data-ajax="true" data-ajax-method="post"
+                                      data-ajax-loading="#loader" data-ajax-update="#complex-ajax">
+                                    <button type="submit" value="Pay" class="btn btn-primary">
+                                        Pay
+                                    </button>
+                                    <input type="hidden" name="Lang" value="@ViewBag.Lang" />
+                                    <input type="hidden" name="CardAmount" value="@ViewBag.TotalAmount" />
+                                    <input type="hidden" name="AwayaCardType" value="@ViewBag.CardType" />
+                                </form>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td>
+                    <table class="card-detail text-right w-75">
+                        <tr><td class="card-title">نوع بطاقة أيوا </td></tr>
+                        <tr><td class="card-value">@ViewBag.Name</td></tr>
+
+                        <tr><td class="card-title">المبلغ قبل ضريبة القيمة المضافة</td></tr>
+                        <tr><td class="card-value">ريال سعودي @ViewBag.CardAmount</td></tr>
+
+                        <tr> <td class="card-title">ضريبة القيمة المضافة</td></tr>
+                        <tr><td class="card-value">ريال سعودي @ViewBag.VAT</td></tr>
+                        <tr><td class="card-title">إجمالي المبلغ</td></tr>
+                        <tr><td class="card-value">ريال سعودي @ViewBag.TotalAmount</td></tr>
+                        <tr>
+                            <td class="card-button">
+                                <form id="otpform" asp-controller="Aywa" asp-action="Index" data-ajax="true" data-ajax-method="post"
+                                      data-ajax-loading="#loader" data-ajax-update="#complex-ajax">
+                                    <button type="submit" value="الدفع" class="btn btn-primary">
+                                        الدفع
+                                    </button>
+                                    <input type="hidden" name="Lang" value="@ViewBag.Lang" />
+                                    <input type="hidden" name="CardAmount" value="@ViewBag.TotalAmount" />
+                                    <input type="hidden" name="AwayaCardType" value="@ViewBag.CardType" />
+                                </form>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td colspan="6" style="width:60%;"><img src="~/images/@imageName" style="width: 80%;" /></td>
+            </tr>
+        }
+        </table>
+    </div>
+
+    @*<script>
+        function Pay(amount,cardid) {
+             var url = '@Url.Action("Index", "Aywa")';
+            window.location.href = url + "?amt=" + amount + "&CardType=" + cardid + "&Lang=" + '@ViewBag.Lang';
+        }
+        </script>*@
+</div>

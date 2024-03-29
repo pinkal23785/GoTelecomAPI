@@ -1,0 +1,5 @@
+2021-11-21T20:55:30.8684748+05:30  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2021-11-21T20:55:30.9330978+05:30  [INF] Hosting environment: "Development" (c3307c92)
+2021-11-21T20:55:30.9752934+05:30  [INF] Content root path: "D:\GoRepo\HyperPaySolution\Go.Service.Solution\Go.FTTH.OpenAccess.Service" (b5d60022)
+2021-11-21T20:55:56.0807759+05:30 80000058-0001-fb00-b63f-84710c7967bb [INF] Create Mobily Ticket (ba7e28b7)
+2021-11-21T20:56:18.8350927+05:30 80000058-0001-fb00-b63f-84710c7967bb [INF] {"Operation":"OpenSR","TransactionID":"INC215521085556","ServiceAccNum":"100126683869141","CustomerType":"Consumer","SRType":"Open Access","SRArea":"GO","SRSubArea":"General","Channel":"GO","Description":"string","Status":"Assigned","SubStatus":"Unassigned","ServiceOwnerName":"string","ServiceOwnerNumber":"","Flex1":"","Flex2":""} (6347e916)

@@ -1,0 +1,63 @@
+﻿@model CardModel
+
+<div class="vh-80 d-flex justify-content-center align-items-center">
+    <form id="uploadForm" asp-controller="Card" asp-action="UploadFile" method="post"
+          enctype="multipart/form-data">
+        <table cellpadding="10" cellspacing="10" class="table-bordered">
+            <tr>
+                <td colspan="2" align="center" class="h4">
+                    Upload AWAYA Card<br />
+                    <h6><a href="~/files/AwayaCard.xlsx">Download Sample file</a></h6>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div asp-validation-summary="ModelOnly">
+                        <span>Please correct the following errors</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Card Type
+                </td>
+                <td>
+                    <select id="drpCardList" class="form-control" asp-for="CardId"
+                            asp-items="@(new SelectList(Model.CardList, "Value", "Text"))">
+                        <option value="">--Select--</option>
+                    </select>
+                    <span asp-validation-for="CardId"></span>
+                    <input type="hidden" asp-for="CardId" />
+                </td>
+
+            </tr>
+            <tr>
+                <td>Upload File (Allowed file .xlsx)</td>
+                <td>
+                    <input id="file" type="file" name="file" asp-for="file" />
+                    <span asp-validation-for="file"></span><br />
+                    <span id="spnfiletype" style="display:none" class="field-validation-error"> Only .xlsx extension supported</span>
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td><input type="submit" title="submit" value="Submit" onclick="javascript:validate(event);" /></td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<script>
+    function validate(event) {
+        var regex = new RegExp("(.*?)\.(xlsx)$");
+        var name = $("#file").val().split('.').pop().toLowerCase();
+        if (name !== "xlsx") {
+            $("#spnfiletype").show();
+            event.preventDefault();
+        }
+        else {
+            $("#uploadForm").submit();
+        }
+    }
+</script>

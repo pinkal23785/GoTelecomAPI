@@ -1,0 +1,170 @@
+﻿@{
+    Layout = null;
+}
+@model OTPModel;
+
+<div id="complex-ajax">
+    @Html.Partial("_PartialHeader")
+    <div class="d-flex justify-content-center align-items-center">
+        @if (Model.Lang == "en")
+        {
+            <ul class="steps">
+                <li class="step step-success">
+                    <a asp-action="Home" asp-controller="Aywa" asp-route-Lang="@Model.Lang">
+
+                        <div class="step-content">
+                            <span class="step-circle">1</span>
+                            <span class="step-text">Choose Card</span>
+                        </div>
+
+                    </a>
+                </li>
+                <li class="step step-success">
+                    <a asp-action="GetCardDetails" asp-controller="Aywa" data-ajax="true"
+                       data-ajax-loading="#loader" data-ajax-update="#complex-ajax" asp-route-Lang="@Model.Lang" asp-route-CardType="@Model.AwayaCardType">
+                        <div class="step-content">
+                            <span class="step-circle">2</span>
+                            <span class="step-text">View Card Details</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="step step-active">
+                    <div class="step-content">
+                        <span class="step-circle">3</span>
+                        <span class="step-text">Verification</span>
+                    </div>
+                </li>
+                <li class="step">
+                    <div class="step-content">
+                        <span class="step-circle">4</span>
+                        <span class="step-text">Pay</span>
+                    </div>
+                </li>
+                <li class="step">
+                    <div class="step-content">
+                        <span class="step-circle">5</span>
+                        <span class="step-text">Thank You</span>
+                    </div>
+                </li>
+            </ul>
+        }
+        else
+        {
+            <ul class="steps fontArabic">
+                <li class="step">
+                    <div class="step-content">
+                        <span class="step-circle">5</span>
+                        <span class="step-text">شكرا لك </span>
+                    </div>
+                </li>
+                <li class="step">
+                    <div class="step-content">
+                        <span class="step-circle">4</span>
+                        <span class="step-text">الدفع</span>
+                    </div>
+                </li>
+                <li class="step step-active">
+                    <div class="step-content">
+                        <span class="step-circle">3</span>
+                        <span class="step-text">تحقق</span>
+                    </div>
+                </li>
+                <li class="step step-success">
+                    <a asp-action="GetCardDetails" asp-controller="Aywa" data-ajax="true"
+                       data-ajax-loading="#loader" data-ajax-update="#complex-ajax" asp-route-Lang="@Model.Lang" asp-route-CardType="@Model.AwayaCardType">
+                        <div class="step-content">
+                            <span class="step-circle">2</span>
+                            <span class="step-text">معلومات البطاقة </span>
+                        </div>
+                    </a>
+                </li>
+                <li class="step step-success">
+                    <a asp-action="Home" asp-controller="Aywa" asp-route-Lang="@Model.Lang">
+                        <div class="step-content">
+                            <span class="step-circle">1</span>
+                            <span class="step-text">اختر البطاقة</span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        }
+    </div>
+
+    <div class="d-flex justify-content-center mt-5">
+        <div class="form-group w-50 ">
+            <form id="otpform" asp-controller="Aywa" asp-action="SendOTP" data-ajax="true" data-ajax-method="post"
+                  data-ajax-loading="#loader" data-ajax-update="#complex-ajax">
+
+                <div class="otp-title">@(Model.Lang=="en"?"Validation is NOW":"قم بإدخال رقم الجوال و البريد الالكتروني")</div>
+                <div class="form-row payment-row mt-3">
+
+                    <div asp-validation-summary="All" class="form-group col-md-12 text-danger">
+
+                    </div>
+                    <div class="form-group col-md-12">
+                        @*<label for="FirstName" class="payment-label h4">Mobile</label>*@
+                        @{
+                            string cssClass = Model.Lang == "en" ? "form-control payment-input" : "form-control payment-input text-right";
+                            string MobileText = Model.Lang == "en" ? "Mobile Number" : "رقم الجوال";
+                            string EmailText = Model.Lang == "en" ? "Email" : "البريد الالكتروني";
+                            string smallText = Model.Lang == "en" ? "Mobile number start with 05" : "يبدأ رقم الجوال ب 05";
+                        }
+                        @Html.TextBoxFor(model => model.Mobile, new { @class = @cssClass, @placeholder = @MobileText })
+
+                        @if (Model.Lang == "en")
+                        {
+                            <small class="text-danger">@smallText</small>
+                            <span asp-validation-for="Mobile" class="field-validation-valid">You must provide a mobile number</span>
+                        }
+                        else
+                        {
+                            <div class="text-right"> <small class="text-danger text-right ">@smallText</small></div>
+                            <span class="d-flex flex-column-reverse text-right field-validation-valid">
+                                <span asp-validation-for="Mobile" class="field-validation-valid">
+                                    يجب عليك تقديم رقم هاتف محمول
+                                </span>
+                            </span>
+                        }
+
+                    </div>
+                    <div class="form-group col-md-12">
+                        @*<label for="LastName" class="payment-label h4">Email</label>*@
+                        @Html.TextBoxFor(model => model.Email, new { @class = @cssClass, @placeholder = @EmailText })
+                        @if (Model.Lang == "en")
+                        {
+                            <span asp-validation-for="Email">You must provide a email</span>
+                        }
+                        else
+                        {
+                            <span class="d-flex flex-column-reverse text-right">
+                                <span asp-validation-for="Email" class="field-validation-valid">يجب عليك تقديم بريد إلكتروني</span>
+                            </span>
+                        }
+                    </div>
+                    <div class="form-group col-md-12 d-flex justify-content-center mt-2">
+                        <input type="submit" title="Verify OTP" value="@(Model.Lang=="en"?"SEND OTP":"طلب رمز التحقق")" class="btn btn-primary btn-block" />
+                    </div>
+
+                    @Html.HiddenFor(model => model.CardAmount)
+                    @Html.HiddenFor(model => model.AwayaCardType)
+                    @Html.HiddenFor(model => model.Lang)
+                </div>
+
+            </form>
+        </div>
+
+
+    </div>
+
+
+
+</div>
+
+<script>
+        //function submitForm(obj) {
+        //    $(obj).attr('disabled', 'disabled');
+
+        //    $("#otpform").submit();
+        //    $(obj).removeAttr('disabled')
+        //}
+</script>

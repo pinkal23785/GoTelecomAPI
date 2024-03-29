@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>D:\GoRepo\HyperPaySolution\Go.Service.Solution\Go.LTEWallet.Services\bin\Release\netcoreapp3.1\publish\</_PublishTargetUrl>
+    <History>True|2021-11-17T18:46:31.8833362Z;True|2021-11-17T18:47:51.7874340+05:30;True|2021-11-17T18:47:14.9390820+05:30;True|2021-11-14T12:06:03.8559597+05:30;True|2021-11-11T18:40:46.8710752+05:30;True|2021-11-10T01:39:50.7186340+05:30;True|2021-11-09T14:30:48.1322880+05:30;True|2021-11-08T02:14:02.2098689+05:30;True|2021-11-03T14:00:20.9822547+05:30;True|2021-11-01T13:31:34.3531613+05:30;True|2021-10-27T20:01:01.7285449+05:30;True|2021-10-26T16:16:06.0045689+05:30;True|2021-10-26T16:11:04.5485785+05:30;True|2021-10-26T15:57:12.8959917+05:30;True|2021-10-26T04:05:06.7060860+05:30;True|2021-10-26T03:55:59.7553142+05:30;</History>
+  </PropertyGroup>
+</Project>

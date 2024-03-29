@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Content Remove="wwwroot\css\fonts\NotoNaskhArabic-Regular.ttf" />
+	  <Content Remove="wwwroot\css\fonts\NotoSans-Regular.ttf" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.16" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.10">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="Oracle.EntityFrameworkCore" Version="5.21.3" />
+		<PackageReference Include="QRCoder" Version="1.4.3" />
+		<PackageReference Include="System.Text.Json" Version="5.0.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="wwwroot\css\fonts\NotoNaskhArabic-Regular.ttf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Include="wwwroot\css\fonts\NotoSans-Regular.ttf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+
+</Project>

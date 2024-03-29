@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Template>
+	<English>Hello {0}
+A new bill has been issued for your package {1} for the month {2} with amount of SR {3} and total due amount of SR {4}
+Please pay within 25 days of issuing the bill through GO Connect app https://tinyurl.com/m4pnb8dm or through SADAD using account No. {5} 
+You can also review the invoice details through this link {7}
+	</English>
+
+	<Arabic>مرحبا {0}
+نود اشعارك بصدور فاتورتك على باقة {1}  لشهر {2}   بمبلغ {3} ريال والمبلغ الإجمالي المستحق هو {4} ريال.
+يرجى السداد خلال 25 يوم من صدور الفاتورة من خلال تطبيق GO Connectt   https://tinyurl.com/yjmtw44m  أو عبر قنوات سداد  مستخدماً رقم الحساب {5}.
+كما يمكنك مراجعة تفاصيل الفاتورة من خلال هذا الرابط {7}
+	</Arabic>
+
+</Template>

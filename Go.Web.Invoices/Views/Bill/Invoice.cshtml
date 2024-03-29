@@ -1,0 +1,160 @@
+﻿@model Go.Web.Invoices.Data.Entities.CustomerInvoice
+@{
+    ViewData["Title"] = "Simplified Tax Invoice";
+}
+
+
+@if (Model != null)
+{
+    <div class="d-flex justify-content-center mb-3">
+        <div style="width:100%;">
+            <div class="d-flex justify-content-end mt-2 mb-2">
+                <button type="button" class="btn-sm btn-secondary" onclick="javascript: Print();">Print</button>
+            </div>
+            <div id="invoice">
+                <div class="row">
+                    <img src="~/images/header-img.jpg" class="center-block img-width" />
+                </div>
+                <div class="row justify-content-center">
+                    <table width="61%" class="bill-tbl">
+                        <tr>
+                            <td class="bill-text-background">Customer Name</td>
+                            <td class="bill-text-empty">@Model.CUSTOMER_NAME</td>
+                            <td class="bill-text-background">إسم العميل</td>
+                        </tr>
+                        <tr>
+                            <td class="bill-text-background">Account No</td>
+                            <td class="bill-text-empty">@Model.ACCOUNT_NO</td>
+                            <td class="bill-text-background">رقم الحساب</td>
+                        </tr>
+                        <tr>
+                            <td class="bill-text-background">Package</td>
+                            <td class="bill-text-empty">@Model.PLAN_NAME</td>
+                            <td class="bill-text-background">الباقة</td>
+                        </tr>
+                        <tr>
+                            <td class="bill-text-background">Package Price</td>
+                            <td class="bill-text-empty">@Model.PLAN_PRICE</td>
+                            <td class="bill-text-background">سعر الباقة</td>
+                        </tr>
+                        <tr>
+                            <td class="bill-text-background">Bill Date</td>
+                            <td class="bill-text-empty">@Model.END_T</td>
+                            <td class="bill-text-background">تاريخ الفاتورة</td>
+                        </tr>
+                        <tr>
+                            <td class="bill-text-background">Bill Duration</td>
+                            <td class="bill-text-empty">@Model.START_T.ToString() to @DateTime.Parse(Model.END_T).AddDays(-1).ToString("dd-MMM-yy")</td>
+                            <td class="bill-text-background">فترة الفاتورة</td>
+                        </tr>
+                        <tr>
+                            <td class="bill-text-background">Bill No</td>
+                            <td class="bill-text-empty">@Model.BILL_NO</td>
+                            <td class="bill-text-background">رقم الفاتورة</td>
+                        </tr>
+                        <tr>
+                            <td class="bill-text-background">Due Date</td>
+                            <td class="bill-text-empty">@Model.DUE_T</td>
+                            <td class="bill-text-background">تاريخ الاستحقاق</td>
+                        </tr>
+                        <tr>
+                            <td class="bill-text-background">Credit Limit</td>
+                            <td class="bill-text-empty">@Model.CREDIT_LIMIT</td>
+                            <td class="bill-text-background"> الحد الإئتماني</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="row justify-content-center mb-2">
+                    <table class="tbl-invoice-dtl">
+                        <tr>
+                            <td class="title">INVOICE DETAILS تفاصيل الفاتورة</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <table class="tbl-invoice-inner">
+                                    <tr>
+                                        <td class="col-border w-15">
+                                            <span>المبلغ المستحق </span>
+                                            <br />Outstanding Balance
+                                        </td>
+                                        <td class="col-sign w-1" rowspan="2">=</td>
+                                        <td class="col-border w-15">
+                                            <span>
+                                                المدفوعات
+                                            </span><br />
+                                            Paid Amounts
+                                        </td>
+
+                                        <td class="col-sign w-1" rowspan="2">-</td>
+                                        <td class="col-border w-15">
+                                            <span>الفاتورة السابقة </span>
+                                            <br />
+                                            Previous Due Amount
+                                        </td>
+                                        <td class="col-sign w-1" rowspan="2">+</td>
+                                        <td class="col-border w-15">
+                                            <span>
+                                                الفاتورة الحالية مع ضريبة
+                                            </span>
+                                            <span>القيمة المضافة</span>
+                                            <br />Current Bill with VAT 15%
+                                        </td>
+                                        <td class="col-sign w-1" rowspan="2">=</td>
+                                        <td class="col-border w-15">
+                                            <span>ضريبة القيمة المضافة </span>
+                                            <span>%15</span>
+
+                                            <br />VAT 15%
+                                        </td>
+                                        <td class="col-sign w-1" rowspan="2">+</td>
+                                        <td class="col-border w-15">
+                                            <span>
+                                                الفاتورة الحالية
+                                            </span><br />Current Bill
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-border w-15">@Model.TOTAL_DUE</td>
+                                        <td class="col-border w-15">@Model.PAID_AMOUNT</td>
+
+                                        <td class="col-border w-15">@Model.PREVIOUS_TOTAL</td>
+
+                                        <td class="col-border w-15">@Model.CURRENT_TOTAL</td>
+
+                                        <td class="col-border w-15">@Model.CYCLE_TAX</td>
+
+                                        <td class="col-border w-15">@Model.CURRENT_TOTAL_WV</td>
+                                    </tr>
+                                </table>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td><img src="~/images/invoice-footer-3.jpg" class="center-block img-width-tbl" /></td>
+                        </tr>
+                        @*<tr>
+                                <td><img src="~/images/invoice-footer-1.png" class="center-block img-width-tbl" /></td>
+                            </tr>*@
+
+                        <tr>
+                            <table style="width:100%">
+                                <tr>
+                                    <td width="20%"><img src="@ViewBag.QrCodeUri" width="100%" /></td>
+                                    <td width="80%"><img src="~/images/invoice-footer-4.jpg" width="100%" /></td>
+                                </tr>
+                            </table>
+
+                        </tr>
+
+                    </table>
+
+                </div>
+            </div>
+            <div class="d-flex justify-content-end mt-2 mb-2">
+                <button type="button" class="btn-sm btn-secondary" onclick="javascript: Print();">Print</button>
+            </div>
+        </div>
+    </div>
+
+}

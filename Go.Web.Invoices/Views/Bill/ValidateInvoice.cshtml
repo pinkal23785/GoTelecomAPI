@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewData["Title"] = "Simplified Tax Invoice";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Scripts {
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <partial name="_ValidationScriptsPartial" />
+    </script>
+}
+<div class="row">
+    <img src="~/images/header-img.jpg" class="center-block img-width" />
+</div>
+<div class="d-flex justify-content-center jumbotron align-middle">
+    @using (Html.BeginForm("Invoice", "Bill", FormMethod.Post))
+{
+
+    <div class="form-group">
+        <div class="g-recaptcha" data-sitekey="@ViewBag.SiteKey"></div>
+    </div>
+    <input type="submit" title="Submit" class="btn btn-success" />
+
+    }
+</div>

@@ -1,0 +1,17 @@
+SELECT *
+FROM (
+SELECT DEAL.PLAN_ID, DEAL.Deal_Name, round((pa.attrib_value * 1.15),2) PlanPrice_wth_VAT,
+row_number() over (partition by DEAL.PLAN_ID order by PA.attrib_value desc) rn
+FROM PROD_CATALOG_PRODUCT_TBL PRO, prod_catalog_deal_tbl DEAL, prod_catalog_attributes_tbl PA
+WHERE pro.deal_id = DEAL.DEAL_ID
+AND PA.PROD_ID = pro.prod_id
+AND pa.attrib_name = '/event/billing/product/fee/cycle/cycle_forward_arrear'
+AND DEAL.PLAN_ID in (SELECT PLAN_ID FROM PLAN_COMISSION_CONFIG WHERE IS_ACTIVE=1)
+)
+WHERE RN > 1
+
+
+0544144771
+0553999456
+
+List<CommissionPlan>

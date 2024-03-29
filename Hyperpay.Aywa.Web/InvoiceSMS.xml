@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Template>
+	<English>Dear Customer, Thank you for your order, your card number is: {1}
+to view paymnet details , click :{0}
+	</English>
+
+	<Arabic>عزيزي العميل، شكراً لك على طلبك، رقم بطاقة أيوا:
+{1}
+لتفاصيل عملية الشراء اضغط الرابط {0}
+	</Arabic>
+
+</Template>

@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="10.2" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="EQUIPMENT_SIM_DETAILS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false"
+				  ParameterTypeSemantics="AllowImplicitConversion" Schema="CADB">
+          <Parameter Name="P_SERIAL_ID" Type="varchar2" Mode="In" />
+          <Parameter Name="V_TYPE" Type="varchar2" Mode="In" />
+          <Parameter Name="V_IMSI" Type="varchar2" Mode="Out" />
+          <Parameter Name="V_MSISDN" Type="varchar2" Mode="Out" />
+          <Parameter Name="V_ICCID" Type="varchar2" Mode="Out" />
+          <Parameter Name="V_MACID" Type="varchar2" Mode="Out" />
+          <Parameter Name="V_CPE_MODEL" Type="varchar2" Mode="Out" />
+          <Parameter Name="V_STATUS" Type="varchar2" Mode="Out" />
+        </Function>
+        <EntityContainer Name="ModelStoreContainer" />
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="EQUIPMENT_SIM_DETAILS">
+            <Parameter Name="P_SERIAL_ID" Mode="In" Type="String" />
+            <Parameter Name="V_TYPE" Mode="In" Type="String" />
+            <Parameter Name="V_IMSI" Mode="Out" Type="String" />
+            <Parameter Name="V_MSISDN" Mode="Out" Type="String" />
+            <Parameter Name="V_ICCID" Mode="Out" Type="String" />
+            <Parameter Name="V_MACID" Mode="Out" Type="String" />
+            <Parameter Name="V_CPE_MODEL" Mode="Out" Type="String" />
+            <Parameter Name="V_STATUS" Mode="Out" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities" >
+          <FunctionImportMapping FunctionImportName="EQUIPMENT_SIM_DETAILS" FunctionName="Model.Store.EQUIPMENT_SIM_DETAILS" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

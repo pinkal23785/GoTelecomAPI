@@ -1,0 +1,188 @@
+﻿@{
+    Layout = null;
+}
+@model PaymentWidgetModel
+
+<script>
+    var wpwlOptions = {
+        style: "plain",
+        onReady: function () {
+            $(".wpwl-label-brand").hide();
+            $(".wpwl-wrapper-brand").hide();
+            $(".wpwl-brand-card").hide();
+            $(".wpwl-label-cardNumber").hide();
+            $(".wpwl-label-expiry").hide();
+            $(".wpwl-label-cardHolder").hide();
+            $(".wpwl-label-cvv").hide();
+            $("#payment-box").show();
+        }
+    }
+    function HideControl() {
+
+    };
+</script>
+<div id="complex-ajax">
+    @Html.Partial("_PartialHeader")
+
+    <div class="d-flex justify-content-center align-items-center">
+        @if (Model.Lang == "en")
+        {
+            <ul class="steps">
+                <li class="step step-success">
+                    <a asp-action="Home" asp-controller="Aywa" asp-route-Lang="@Model.Lang">
+
+                        <div class="step-content">
+                            <span class="step-circle">1</span>
+                            <span class="step-text">Choose Card</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="step step-success">
+                    <a asp-action="GetCardDetails" asp-controller="Aywa" data-ajax="true"
+                       data-ajax-loading="#loader" data-ajax-update="#complex-ajax" asp-route-Lang="@Model.Lang" asp-route-CardType="@Model.AwayaCardId">
+                        <div class="step-content">
+                            <span class="step-circle">2</span>
+                            <span class="step-text">View Card Details</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="step step-success">
+                    <a asp-action="Index" asp-controller="Aywa" asp-route-Lang="@Model.Lang" asp-route-CardAmount="@Model.Amount"
+                       asp-route-AwayaCardType="@Model.AwayaCardId"
+                       data-ajax="true"
+                       data-ajax-loading="#loader" data-ajax-update="#complex-ajax">
+                        <div class="step-content">
+                            <span class="step-circle">3</span>
+                            <span class="step-text">Verification</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="step step-active">
+                    <div class="step-content">
+                        <span class="step-circle">4</span>
+                        <span class="step-text">Pay</span>
+                    </div>
+                </li>
+                <li class="step">
+                    <div class="step-content">
+                        <span class="step-circle">5</span>
+                        <span class="step-text">Thank You</span>
+                    </div>
+                </li>
+            </ul>
+        }
+        else
+        {
+            <ul class="steps fontArabic">
+                <li class="step">
+                    <div class="step-content">
+                        <span class="step-circle">5</span>
+                        <span class="step-text">شكرا لك </span>
+                    </div>
+                </li>
+                <li class="step step-active">
+                    <div class="step-content">
+                        <span class="step-circle">4</span>
+                        <span class="step-text">الدفع</span>
+                    </div>
+                </li>
+                <li class="step step-success ">
+                    <a asp-action="Index" asp-controller="Aywa" asp-route-Lang="@Model.Lang" asp-route-CardAmount="@Model.Amount"
+                       asp-route-AwayaCardType="@Model.AwayaCardId"
+                       data-ajax="true"
+                       data-ajax-loading="#loader" data-ajax-update="#complex-ajax">
+                        <div class="step-content">
+                            <span class="step-circle">3</span>
+                            <span class="step-text">تحقق</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="step step-success">
+                    <a asp-action="GetCardDetails" asp-controller="Aywa" data-ajax="true"
+                       data-ajax-loading="#loader" data-ajax-update="#complex-ajax" asp-route-Lang="@Model.Lang" asp-route-CardType="@Model.AwayaCardId">
+                        <div class="step-content">
+                            <span class="step-circle">2</span>
+                            <span class="step-text">معلومات البطاقة </span>
+                        </div>
+                    </a>
+                </li>
+                <li class="step step-success">
+                    <a asp-action="Home" asp-controller="Aywa" asp-route-Lang="@Model.Lang">
+                        <div class="step-content">
+                            <span class="step-circle">1</span>
+                            <span class="step-text">اختر البطاقة</span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        }
+    </div>
+    <div id="payment-box" class="d-flex flex-wrap justify-content-center align-items-center mt-3" style="display:none;">
+        <div class="text-center otp-title mt-3" style="flex-basis:100%;">
+            @(Model.Lang=="en"?"Card Details":"معلومات البطاقة")
+        </div>
+        <div class="payment-box">
+
+            @*<div class="text-center mt-3">
+                <a asp-action="Index" asp-controller="Aywa" asp-route-Lang="@Model.Lang" asp-route-CardAmount="@Model.Amount"
+                   asp-route-AwayaCardType="@Model.AwayaCardId"
+                   data-ajax="true"
+                   data-ajax-loading="#loader" data-ajax-update="#complex-ajax" class="btn-link text-center mt-3">@(Model.Lang=="en"?"Go Back":"اذهب إلى الوراء")</a>
+            </div>*@
+            <div class="hyper-box">
+                <script src="@ViewBag.HyperPayWidgetURL"></script>
+                <form action="@Model.PaymentResultURL" class="paymentWidgets" data-brands="VISA MASTER MADA" onload="HideControl();">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .wpwl-control {
+            width: 100%;
+        }
+
+        .wpwl-wrapper {
+            width: 100% !important;
+        }
+
+        .wpwl-button-pay {
+            display: block;
+            background-color: #e7263f;
+            border: none;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 500;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+            .wpwl-button-pay:hover, .wpwl-button-pay:focus, .wpwl-button-pay:active {
+                color: #333;
+                background-color: #e7263f;
+            }
+
+        .hyper-box {
+            padding: 25px;
+        }
+
+            .hyper-box .wpwl-control-cardNumber, .hyper-box .wpwl-control-cvv, .hyper-box .wpwl-control-expiry, .hyper-box .wpwl-control-cardHolder {
+                border: none;
+                border-bottom: solid 1px #eee;
+            }
+
+            .hyper-box .wpwl-label-cvv {
+                display: none !important;
+            }
+
+        .payment-box {
+           width:100%;
+        }
+
+        .wpwl-button, .wpwl-control {
+            font-family: none;
+            font-size: none;
+            line-height: inherit;
+        }
+    </style>
+</div>

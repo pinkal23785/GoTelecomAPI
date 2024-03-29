@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Template>
+	<English>
+		Dear {0}
+
+		Your invoice has been issued for order {1} with amount of SAR {2}
+		You can review your invoice details through this link {3}
+
+	</English>
+
+	<Arabic>
+		عزيزي {0}
+
+		تم إصدار فاتورتك للأمر {1} بمبلغ {2} ريال سعودي
+		يمكنك مراجعة تفاصيل فاتورتك من خلال هذا الرابط {3}
+
+	</Arabic>
+
+</Template>

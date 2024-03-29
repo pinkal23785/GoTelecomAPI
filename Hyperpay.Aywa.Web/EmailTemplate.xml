@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Template>
+	<English>
+		&lt;html dir=&quot;rtl&quot;&gt;&lt;head&gt;
+
+
+		&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+
+
+
+		&lt;/head&gt;&lt;body rightmargin=&quot;0&quot; topmargin=&quot;0&quot; offset=&quot;0&quot; bgcolor=&quot;#ffffff&quot; marginheight=&quot;0&quot; marginwidth=&quot;0&quot;&gt;
+
+		&lt;table align=&quot;center&quot;  cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; width=&quot;600px&quot;&gt;
+
+		&lt;tbody&gt;&lt;tr&gt;
+
+
+		&lt;td style=&quot;BACKGROUND-REPEAT:no-repeat&quot; valign=&quot;top&quot;  align=&quot;center&quot;&gt;
+		&amp;nbsp;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;
+
+
+		&lt;td style=&quot;BACKGROUND-REPEAT:no-repeat&quot; valign=&quot;top&quot;  align=&quot;center&quot;&gt;
+		&lt;p&gt;&lt;a href=&quot;http://www.go.com.sa/&quot;&gt;
+		&lt;img height=&quot;150&quot; border=&quot;0&quot; src=&quot;https://www.go.com.sa/atheeb-cms/uploads/images/GenericEmailBanner.jpg&quot; alt=&quot;Welcome to GO&quot; width=&quot;600&quot; &gt;&lt;/a&gt;&lt;/p&gt;
+		&lt;table cellspacing=&quot;0&quot; cellpadding=&quot;20&quot; width=&quot;600&quot; bgcolor=&quot;#ffffff&quot;&gt;
+		&lt;tbody&gt;
+		&lt;tr&gt;
+		&lt;td dir=&quot;rtl&quot; style=&quot;TEXT-ALIGN:right;LINE-HEIGHT:150%;FONT-FAMILY:tahoma;FONT-SIZE:12px; height: 150px;&quot; bgcolor=&quot;#ffffff&quot; valign=&quot;top&quot;&gt;
+		&lt;p style=&quot;text-align:left; direction:ltr&quot; class=&quot;auto-style1&quot;&gt;&lt;strong&gt;Dear Customer,&lt;/strong&gt;&lt;p style=&quot;text-align:left; direction:ltr;&quot;&gt;
+		AYWA Card OTP Code:&amp;nbsp; &lt;strong&gt;{0}&lt;/strong&gt;.
+		&lt;br&gt;
+		Please enter the OTP code to complete  your purshasing.
+		&lt;br&gt;&lt;br&gt;
+
+
+		Best regards,&lt;strong&gt;&lt;br&gt;GO Customer Care&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
+		&lt;tr&gt;
+		&lt;td align=&quot;center&quot;style=&quot;background-color:#eeeeee; vertical-align:middle; direction:ltr&quot; &gt;
+		&lt;span style=&quot;FONT-FAMILY:&#39;verdana&#39;;COLOR:#666666;FONT-SIZE:10px&quot;&gt;
+		Please do not reply to this email. &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+
+	</English>
+
+	<Arabic>
+		&lt;html dir=&quot;rtl&quot;&gt;&lt;head&gt;
+
+
+		&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+
+
+
+		&lt;/head&gt;&lt;body rightmargin=&quot;0&quot; topmargin=&quot;0&quot; offset=&quot;0&quot; bgcolor=&quot;#ffffff&quot; marginheight=&quot;0&quot; marginwidth=&quot;0&quot;&gt;
+
+		&lt;table align=&quot;center&quot;  cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; width=&quot;600px&quot;&gt;
+
+		&lt;tbody&gt;&lt;tr&gt;
+
+
+		&lt;td style=&quot;BACKGROUND-REPEAT:no-repeat&quot; valign=&quot;top&quot;  align=&quot;center&quot;&gt;
+		&amp;nbsp;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;
+
+
+		&lt;td style=&quot;BACKGROUND-REPEAT:no-repeat&quot; valign=&quot;top&quot;  align=&quot;center&quot;&gt;
+		&lt;p&gt;&lt;a href=&quot;http://www.go.com.sa/&quot;&gt;
+		&lt;img height=&quot;150&quot; border=&quot;0&quot; src=&quot;https://www.go.com.sa/atheeb-cms/uploads/images/GenericEmailBanner.jpg&quot; alt=&quot;Welcome to GO&quot; width=&quot;600&quot; &gt;&lt;/a&gt;&lt;/p&gt;
+		&lt;table cellspacing=&quot;0&quot; cellpadding=&quot;20&quot; width=&quot;600&quot; bgcolor=&quot;#ffffff&quot;&gt;
+		&lt;tbody&gt;
+		&lt;tr&gt;
+		&lt;td dir=&quot;rtl&quot; style=&quot;TEXT-ALIGN:right;LINE-HEIGHT:150%;FONT-FAMILY:tahoma;FONT-SIZE:12px; height: 150px;&quot; bgcolor=&quot;#ffffff&quot; valign=&quot;top&quot;&gt;
+		&lt;p&gt;&lt;strong style=&quot;font-size:12px&quot; &gt;عزيزنا العميل،&lt;/strong&gt;&lt;p&gt;رمز التحقق الخاص
+		ببطاقة أيوا :&amp;nbsp;{0}
+		&lt;br&gt;
+		الرجاء إدخال رمز التحقق لإتمام عملية الشراء الخاصة بك.
+		&lt;br&gt;&lt;br&gt;
+
+
+		&lt;p&gt;&lt;strong&gt;&lt;/strong&gt;مع أطيب التمنيات&lt;strong&gt;&lt;br&gt;فريق الرعاية بالعملاء&lt;/strong&gt;&lt;/p&gt;
+		&lt;/td&gt;&lt;/tr&gt;
+		&lt;tr&gt;
+		&lt;td align=&quot;center&quot;style=&quot;background-color:#eeeeee; vertical-align:middle&quot;&gt;&lt;span style=&quot;font-size:10px;color:#666666;line-height:100%;font-family:tahoma;&quot;&gt;يرجى عدم الرد على هذا الايميل
+		&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+	</Arabic>
+
+</Template>

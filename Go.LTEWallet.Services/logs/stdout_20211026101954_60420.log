@@ -1,0 +1,49 @@
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Development
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: D:\GoRepo\HyperPaySolution\Go.Service.Solution\Go.LTEWallet.Services
+warn: Microsoft.EntityFrameworkCore.Query[10103]
+      The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results.
+fail: Microsoft.EntityFrameworkCore.Database.Command[0]
+      2021-10-26 15:50:57.429197 ThreadID:4   (ERROR)   OracleRelationalCommand.ExecuteReaderAsync() :  Oracle.ManagedDataAccess.Client.OracleException (0x80004005): ORA-00907: missing right parenthesis
+         at OracleInternal.ServiceObjects.OracleConnectionImpl.VerifyExecution(Int32& cursorId, Boolean bThrowArrayBindRelatedErrors, SqlStatementType sqlStatementType, Int32 arrayBindCount, OracleException& exceptionForArrayBindDML, Boolean& hasMoreRowsInDB, Boolean bFirstIterationDone)
+         at OracleInternal.ServiceObjects.OracleCommandImpl.ExecuteReader(String commandText, OracleParameterCollection paramColl, CommandType commandType, OracleConnectionImpl connectionImpl, OracleDataReaderImpl& rdrImpl, Int32 longFetchSize, Int64 clientInitialLOBFS, OracleDependencyImpl orclDependencyImpl, Int64[] scnForExecution, Int64[]& scnFromExecution, OracleParameterCollection& bindByPositionParamColl, Boolean& bBindParamPresent, Int64& internalInitialLOBFS, Int64 internalInitialJSONFS, OracleException& exceptionForArrayBindDML, OracleConnection connection, OracleLogicalTransaction& oracleLogicalTransaction, IEnumerable`1 adrianParsedStmt, Boolean isDescribeOnly, Boolean isFromEF)
+         at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteReader(Boolean requery, Boolean fillRequest, CommandBehavior behavior)
+         at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteDbDataReader(CommandBehavior behavior)
+         at System.Data.Common.DbCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+      --- End of stack trace from previous location where exception was thrown ---
+         at Oracle.EntityFrameworkCore.Storage.Internal.OracleRelationalCommandBuilderFactory.OracleRelationalCommandBuilder.OracleRelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+fail: Microsoft.EntityFrameworkCore.Database.Command[20102]
+      Failed executing DbCommand (1,051ms) [Parameters=[], CommandType='Text', CommandTimeout='600']
+      SELECT "v"."SERIAL_NUMBER", "v"."TUV_ORDER_ID"
+      FROM (
+          select tuv_order.TUV_ORDER_ID, tuv_voucher.SERIAL_NUMBER from tuv_voucher_details_tbl tuv_voucher, tuv_voucher_order_details_tbl tuv_orderwhere tuv_order.voucher_plan in (SELECT PLAN_ID FROM PLAN_COMMISSION_CONFIG)  and tuv_voucher.serial_number='5454500100' and tuv_voucher.tuv_order_id=tuv_order.tuv_order_id
+      ) "v"
+      where rownum <= 1
+fail: Microsoft.EntityFrameworkCore.Infrastructure[0]
+      2021-10-26 15:50:57.835572 ThreadID:4   (ERROR)   OracleExecutionStrategy.ExecuteAsync() :  Oracle.ManagedDataAccess.Client.OracleException (0x80004005): ORA-00907: missing right parenthesis
+         at OracleInternal.ServiceObjects.OracleConnectionImpl.VerifyExecution(Int32& cursorId, Boolean bThrowArrayBindRelatedErrors, SqlStatementType sqlStatementType, Int32 arrayBindCount, OracleException& exceptionForArrayBindDML, Boolean& hasMoreRowsInDB, Boolean bFirstIterationDone)
+         at OracleInternal.ServiceObjects.OracleCommandImpl.ExecuteReader(String commandText, OracleParameterCollection paramColl, CommandType commandType, OracleConnectionImpl connectionImpl, OracleDataReaderImpl& rdrImpl, Int32 longFetchSize, Int64 clientInitialLOBFS, OracleDependencyImpl orclDependencyImpl, Int64[] scnForExecution, Int64[]& scnFromExecution, OracleParameterCollection& bindByPositionParamColl, Boolean& bBindParamPresent, Int64& internalInitialLOBFS, Int64 internalInitialJSONFS, OracleException& exceptionForArrayBindDML, OracleConnection connection, OracleLogicalTransaction& oracleLogicalTransaction, IEnumerable`1 adrianParsedStmt, Boolean isDescribeOnly, Boolean isFromEF)
+         at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteReader(Boolean requery, Boolean fillRequest, CommandBehavior behavior)
+         at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteDbDataReader(CommandBehavior behavior)
+         at System.Data.Common.DbCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+      --- End of stack trace from previous location where exception was thrown ---
+         at Oracle.EntityFrameworkCore.Storage.Internal.OracleRelationalCommandBuilderFactory.OracleRelationalCommandBuilder.OracleRelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+         at Oracle.EntityFrameworkCore.Storage.Internal.OracleRelationalCommandBuilderFactory.OracleRelationalCommandBuilder.OracleRelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+         at Oracle.EntityFrameworkCore.Storage.Internal.OracleRelationalCommandBuilderFactory.OracleRelationalCommandBuilder.OracleRelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(DbContext _, Boolean result, CancellationToken cancellationToken)
+         at Oracle.EntityFrameworkCore.Storage.Internal.OracleExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+fail: Microsoft.EntityFrameworkCore.Query[10100]
+      An exception occurred while iterating over the results of a query for context type 'Go.LTEWallet.Services.Data.CADBContext'.
+      Oracle.ManagedDataAccess.Client.OracleException (0x80004005): ORA-00907: missing right parenthesis
+         at OracleInternal.ServiceObjects.OracleConnectionImpl.VerifyExecution(Int32& cursorId, Boolean bThrowArrayBindRelatedErrors, SqlStatementType sqlStatementType, Int32 arrayBindCount, OracleException& exceptionForArrayBindDML, Boolean& hasMoreRowsInDB, Boolean bFirstIterationDone)
+         at OracleInternal.ServiceObjects.OracleCommandImpl.ExecuteReader(String commandText, OracleParameterCollection paramColl, CommandType commandType, OracleConnectionImpl connectionImpl, OracleDataReaderImpl& rdrImpl, Int32 longFetchSize, Int64 clientInitialLOBFS, OracleDependencyImpl orclDependencyImpl, Int64[] scnForExecution, Int64[]& scnFromExecution, OracleParameterCollection& bindByPositionParamColl, Boolean& bBindParamPresent, Int64& internalInitialLOBFS, Int64 internalInitialJSONFS, OracleException& exceptionForArrayBindDML, OracleConnection connection, OracleLogicalTransaction& oracleLogicalTransaction, IEnumerable`1 adrianParsedStmt, Boolean isDescribeOnly, Boolean isFromEF)
+         at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteReader(Boolean requery, Boolean fillRequest, CommandBehavior behavior)
+         at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteDbDataReader(CommandBehavior behavior)
+         at System.Data.Common.DbCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+      --- End of stack trace from previous location where exception was thrown ---
+         at Oracle.EntityFrameworkCore.Storage.Internal.OracleRelationalCommandBuilderFactory.OracleRelationalCommandBuilder.OracleRelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+         at Oracle.EntityFrameworkCore.Storage.Internal.OracleRelationalCommandBuilderFactory.OracleRelationalCommandBuilder.OracleRelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+         at Oracle.EntityFrameworkCore.

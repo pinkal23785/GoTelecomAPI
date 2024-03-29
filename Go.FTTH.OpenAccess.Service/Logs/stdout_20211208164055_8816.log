@@ -1,0 +1,81 @@
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Development
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: D:\GoRepo\HyperPaySolution\GONetRepo\DotNetApps\Go.FTTH.OpenAccess.Service
+fail: Microsoft.EntityFrameworkCore.Database.Command[0]
+      2021-12-08 22:11:54.717840 ThreadID:4   (ERROR)   OracleRelationalCommand.ExecuteNonQuery() :  Oracle.ManagedDataAccess.Client.OracleException (0x80004005): ORA-06550: line 1, column 7:
+PLS-00306: wrong number or types of arguments in call to 'PRC_TICKET_DETAILS'
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+         at OracleInternal.ServiceObjects.OracleConnectionImpl.VerifyExecution(Int32& cursorId, Boolean bThrowArrayBindRelatedErrors, SqlStatementType sqlStatementType, Int32 arrayBindCount, OracleException& exceptionForArrayBindDML, Boolean& hasMoreRowsInDB, Boolean bFirstIterationDone)
+         at OracleInternal.ServiceObjects.OracleCommandImpl.ExecuteNonQuery(String commandText, OracleParameterCollection paramColl, CommandType commandType, OracleConnectionImpl connectionImpl, Int32 longFetchSize, Int64 clientInitialLOBFS, OracleDependencyImpl orclDependencyImpl, Int64[]& scnFromExecution, OracleParameterCollection& bindByPositionParamColl, Boolean& bBindParamPresent, OracleException& exceptionForArrayBindDML, OracleConnection connection, OracleLogicalTransaction& oracleLogicalTransaction, Boolean isFromEF)
+         at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteNonQuery()
+         at Oracle.EntityFrameworkCore.Storage.Internal.OracleRelationalCommandBuilderFactory.OracleRelationalCommandBuilder.OracleRelationalCommand.ExecuteNonQuery(RelationalCommandParameterObject parameterObject)
+fail: Microsoft.EntityFrameworkCore.Database.Command[20102]
+      Failed executing DbCommand (1,495ms) [Parameters=[piv_account_id='?', piv_order_id='?' (Size = 50) (Direction = Output), piv_sub_id='?' (Size = 50) (Direction = Output), piv_operator_id='?' (Size = 50) (Direction = Output), piv_region='?' (Size = 50) (Direction = Output), piv_city='?' (Size = 50) (Direction = Output), piv_district='?' (Size = 50) (Direction = Output), piv_serial_number='?' (Size = 50) (Direction = Output), piv_macid='?' (Size = 50) (Direction = Output), piv_operator_ref='?' (Size = 50) (Direction = Output), piv_odb_id='?' (Size = 50) (Direction = Output), piv_cust_id='?' (Size = 50) (Direction = Output), piv_contact_no='?' (Size = 50) (Direction = Output), piv_circuit_id='?' (Size = 50) (Direction = Output), piv_service_provider_Id='?' (Size = 50) (Direction = Output), pov_status='?' (Size = 50) (Direction = Output)], CommandType='Text', CommandTimeout='600']
+      BEGIN PKG_FTTH.prc_ticket_details(:piv_account_id, :piv_order_id, :piv_sub_id, :piv_operator_id,:piv_region,:piv_city,:piv_district,:piv_serial_number,:piv_macid,:piv_operator_ref,:piv_odb_id,:piv_cust_id,:piv_contact_no,:piv_circuit_id,:piv_service_provider_Id,:pov_status);END;
+fail: Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware[1]
+      An unhandled exception has occurred while executing the request.
+Oracle.ManagedDataAccess.Client.OracleException (0x80004005): ORA-06550: line 1, column 7:
+PLS-00306: wrong number or types of arguments in call to 'PRC_TICKET_DETAILS'
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+   at Go.FTTH.OpenAccess.Service.Controllers.CustomerController.GetOperatorDetails(String AccountId) in D:\GoRepo\HyperPaySolution\GONetRepo\DotNetApps\Go.FTTH.OpenAccess.Service\Controllers\CustomerController.cs:line 58
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+fail: Microsoft.EntityFrameworkCore.Database.Command[0]
+      2021-12-08 22:12:44.659935 ThreadID:9   (ERROR)   OracleRelationalCommand.ExecuteNonQuery() :  Oracle.ManagedDataAccess.Client.OracleException (0x80004005): ORA-06550: line 1, column 7:
+PLS-00306: wrong number or types of arguments in call to 'PRC_TICKET_DETAILS'
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+         at OracleInternal.ServiceObjects.OracleConnectionImpl.VerifyExecution(Int32& cursorId, Boolean bThrowArrayBindRelatedErrors, SqlStatementType sqlStatementType, Int32 arrayBindCount, OracleException& exceptionForArrayBindDML, Boolean& hasMoreRowsInDB, Boolean bFirstIterationDone)
+         at OracleInternal.ServiceObjects.OracleCommandImpl.ExecuteNonQuery(String commandText, OracleParameterCollection paramColl, CommandType commandType, OracleConnectionImpl connectionImpl, Int32 longFetchSize, Int64 clientInitialLOBFS, OracleDependencyImpl orclDependencyImpl, Int64[]& scnFromExecution, OracleParameterCollection& bindByPositionParamColl, Boolean& bBindParamPresent, OracleException& exceptionForArrayBindDML, OracleConnection connection, OracleLogicalTransaction& oracleLogicalTransaction, Boolean isFromEF)
+         at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteNonQuery()
+         at Oracle.EntityFrameworkCore.Storage.Internal.OracleRelationalCommandBuilderFactory.OracleRelationalCommandBuilder.OracleRelationalCommand.ExecuteNonQuery(RelationalCommandParameterObject parameterObject)
+fail: Microsoft.EntityFrameworkCore.Database.Command[20102]
+      Failed executing DbCommand (517ms) [Parameters=[piv_account_id='?', piv_order_id='?' (Size = 50) (Direction = Output), piv_sub_id='?' (Size = 50) (Direction = Output), piv_operator_id='?' (Size = 50) (Direction = Output), piv_region='?' (Size = 50) (Direction = Output), piv_city='?' (Size = 50) (Direction = Output), piv_district='?' (Size = 50) (Direction = Output), piv_serial_number='?' (Size = 50) (Direction = Output), piv_macid='?' (Size = 50) (Direction = Output), piv_operator_ref='?' (Size = 50) (Direction = Output), piv_odb_id='?' (Size = 50) (Direction = Output), piv_cust_id='?' (Size = 50) (Direction = Output), piv_contact_no='?' (Size = 50) (Direction = Output), piv_circuit_id='?' (Size = 50) (Direction = Output), piv_service_provider_Id='?' (Size = 50) (Direction = Output), pov_status='?' (Size = 50) (Direction = Output)], CommandType='Text', CommandTimeout='600']
+      BEGIN PKG_FTTH.prc_ticket_details(:piv_account_id, :piv_order_id, :piv_sub_id, :piv_operator_id,:piv_region,:piv_city,:piv_district,:piv_serial_number,:piv_macid,:piv_operator_ref,:piv_odb_id,:piv_cust_id,:piv_contact_no,:piv_circuit_id,:piv_service_provider_Id,:pov_status);END;
+fail: Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware[1]
+      An unhandled exception has occurred while executing the request.
+Oracle.ManagedDataAccess.Client.OracleException (0x80004005): ORA-06550: line 1, column 7:
+PLS-00306: wrong number or types of arguments in call to 'PRC_TICKET_DETAILS'
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+   at Go.FTTH.OpenAccess.Service.Controllers.CustomerController.GetOperatorDetails(String AccountId) in D:\GoRepo\HyperPaySolution\GONetRepo\DotNetApps\Go.FTTH.OpenAccess.Service\Controllers\CustomerController.cs:line 58
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+fail: Microsoft.EntityFrameworkCore.Database.Command[0]
+      2021-12-08 22:14:07.100548 ThreadID:4   (ERROR)   OracleRelationalCommand.ExecuteNonQuery() :  Oracle.ManagedDataAccess.Client.OracleException (0x80004005): ORA-06550: line 1, column 7:
+PLS-00306: wrong number or types of arguments in call to 'PRC_TICKET_DETAILS'
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+         at OracleInternal.ServiceObjects.OracleConnectionImpl.VerifyExecution(Int32& cursorId, Boolean bThrowArrayBindRelatedErrors, SqlStatementType sqlStatementType, Int32 arrayBindCount, OracleException& exceptionForArrayBindDML, Boolean& hasMoreRowsInDB, Boolean bFirstIterationDone)
+         at OracleInternal.ServiceObjects.OracleCommandImpl.ExecuteNonQuery(String commandText, OracleParameterCollection paramColl, CommandType commandType, OracleConnectionImpl connectionImpl, Int32 longFetchSize, Int64 clientInitialLOBFS, OracleDependencyImpl orclDependencyImpl, Int64[]& scnFromExecution, OracleParameterCollection& bindByPositionParamColl, Boolean& bBindParamPresent, OracleException& exceptionForArrayBindDML, OracleConnection connection, OracleLogicalTransaction& oracleLogicalTransaction, Boolean isFromEF)
+         at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteNonQuery()
+         at Oracle.EntityFrameworkCore.Storage.Internal.OracleRelationalCommandBuilderFactory.OracleRelationalCommandBuilder.OracleRelationa

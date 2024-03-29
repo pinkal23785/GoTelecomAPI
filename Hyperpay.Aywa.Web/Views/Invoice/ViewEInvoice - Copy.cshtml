@@ -1,0 +1,129 @@
+﻿@model InvoiceModel
+
+<div class="d-flex justify-content-center mt-3">
+    <div class="involice-tbl m-0 border-0 mt-2 text-right">
+        <button type="button" class="btn-sm btn-primary" onclick="javascript: Print();">Print</button>
+    </div>
+</div>
+<div id="invoice" class="d-flex justify-content-center">
+    <table class="involice-tbl mt-3">
+
+        <tr>
+            <td colspan="3" class="center">
+                <img src="~/images/logo.png" />
+            </td>
+        </tr>
+        <tr>
+            <td align="center" colspan="3">
+                <table>
+                    <tr>
+                        <td>VAT ID:</td>
+                        <td>300114291900003</td>
+                        <td>
+                            :
+                            الرقم الضريبي
+                            شكراً لطلبك
+                        </td>
+                    </tr>
+                </table>
+            </td>
+
+        </tr>
+        <tr>
+            <td align="center" colspan="3">Thank You for Your Order</td>
+        </tr>
+        <tr>
+            <td align="center" colspan="3">
+                <table width="55%">
+                    <tr>
+                        <td width="25%">Order #: </td>
+                        <td width="25%">@Model.InvoiceNo</td>
+                        <td width="25%">:رقم الطلب</td>
+                    </tr>
+                    <tr>
+
+                        <td>Invoice #: </td>
+                        <td>@Model.InvoiceNo</td>
+                        <td>:رقم الفاتورة</td>
+                    </tr>
+                    <tr>
+                        <td>Date:</td>
+                        <td>@Model.InvoiceDate</td>
+                        <td>:التاريخ</td>
+                    </tr>
+                </table>
+            </td>
+
+
+        </tr>
+
+
+        <tr>
+            <td colspan="3" class="card-border">AYWA CARD NAME| اسم بطاقة أيوا </td>
+        </tr>
+        <tr>
+            <td colspan="3" class="card-border card-value">@Model.AywaCardName</td>
+        </tr>
+        <tr>
+            <td colspan="3" class="card-border">AYWA CARD NUMBER | رقم بطاقة أيوا</td>
+        </tr>
+        <tr>
+            <td colspan="3" class="card-border card-value">@Model.AywaCardNumber</td>
+        </tr>
+        <tr><td colspan="3" class="card-border">CUSTOMER PAID METHOD | طريقة الدفع</td></tr>
+        <tr><td colspan="3" class="card-border card-value">@Model.PaymentMethod</td></tr>
+        <tr>
+            <td width="30%"><img src="@ViewBag.QrCodeUri" width="100%" /></td>
+            <td align="left">
+                <table width="90%">
+
+                    <tr>
+                        <td align="right"> السعر قبل الضريبة|Price Before VAT:&nbsp;</td>
+                        <td align="left" class="font-weight-bold">SR @Model.Card_Amount</td>
+                    </tr>
+                    <tr>
+
+                        <td align="right">ضريبة القيمة المضافة|VAT 15%:&nbsp;</td>
+                        <td align="left" class="font-weight-bold">SR @Model.VAT_Amount</td>
+                    </tr>
+                    <tr>
+
+                        <td align="right"> السعر بعد الضريبة|Price After VAT:&nbsp;</td>
+                        <td align="left" class="font-weight-bold">SR @Model.TotalAmount</td>
+                    </tr>
+                    <tr>
+
+                        <td align="right">الإجمالي|TOTAL:&nbsp;</td>
+                        <td align="left" class="font-weight-bold">SR @Model.TotalAmount</td>
+                    </tr>
+                </table>
+            </td>
+
+
+
+        </tr>
+
+        <tr>
+            <td colspan="3" height="80"></td>
+        </tr>
+        <tr>
+            <td colspan="3" align="center">
+                For more information, visit <a href="https://aywacards.go.com.sa/">https://aywacards.go.com.sa/</a>
+                Customer Service No. 17777
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" align="center">
+                <a href="https://aywacards.go.com.sa/">https://aywacards.go.com.sa/</a> لمزيد من المعلومات، يرجى زيارة
+                رقم خدمة العملاء 177777
+            </td>
+        </tr>
+    </table>
+
+
+</div>
+
+<script>
+
+   
+</script>

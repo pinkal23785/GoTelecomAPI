@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Template>
+	<English>AYWA Recharge Card Number: {0}
+Paid Amount: SAR {1}
+Date:{2}
+
+	</English>
+
+	<Arabic>AYWA Recharge Card Number: {0}
+Paid Amount: SAR {1}
+Date:{2}
+	</Arabic>
+
+</Template>

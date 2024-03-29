@@ -1,0 +1,134 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<link href="~/lib/jquery-toast-plugin/jquery.toast.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="~/lib/jquery-toast-plugin/jquery.toast.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+@using Hyperpay.Aywa.Web.Data.Entities
+@model List<TransactionHistory>
+<style>
+    .table-condensed {
+        font-size: 10px;
+    }
+
+    .container {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+</style>
+
+<div class="container-fluid">
+    
+    <div class="mt-5 mb-3 d-flex flex-column justify-content-center  align-items-center">
+        <div class="mb-3">
+            <h5 class="card-title flex-fill">Search Customer Transaction</h5>
+        </div><div> 
+            <form asp-action="Index" asp-controller="Report">
+
+                <div class="form-inline">
+                    <div class="form-group m-1">
+                        <label class="sr-only" for="MobileNumber">Mobile Number</label>
+                        <input type="text" id="MobileNumber" name="MobileNumber" class="form-control" placeholder="Mobile Number" value="@ViewBag.MobileNumber" />
+                    </div>
+                    <div class="form-group m-1 d-flex flex-column mt-3" >
+                        <label class="sr-only" for="TransDate">Transaction Date</label>
+                        <input type="text" id="TransDate" name="TransDate" class="form-control" placeholder="Transaction Date" value="@ViewBag.TransDate" />
+                        <span style="font-size:11px">(YY-MM-DD ie. 22-APR-20)</span>
+                    </div>
+                    <input type="submit" value="Submit" class="btn btn-primary" /> &nbsp;
+                    <a href='@Url.Action("Login","Report")' class="btn btn-secondary">Logout</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    @if (Model != null)
+    {
+        <div class="">
+            <table class="table table-bordered table-condensed">
+                <thead>
+                    <tr>
+                        <th>Invoice ID</th>
+                        <th>Mobile Number</th>
+                        <th>Card Number</th>
+                        <th>Trans Type</th>
+                        <th>Trans Date</th>
+                        <th>Payment Method</th>
+                        <th>Payment Ref</th>
+                        <th>Subscriber ID</th>
+                        <th>Account ID</th>
+                        <th>Order ID</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (TransactionHistory m in Model)
+                    {
+
+                        <tr>
+                            <td>
+                                @m.Invoice_ID
+
+                                @Html.HiddenFor(model => m.ID)
+                            </td>
+                            <td>@m.Mobile</td>
+                            <td>@m.CardNumber</td>
+                            <td>@m.Trans_type</td>
+                            <td>@m.Trans_time</td>
+                            <td>@m.Payment_Method</td>
+                            <td>@m.Payment_Ref</td>
+                            <td>@m.PUR_ORD_SUBSCRIBER_ID</td>
+                            <td>@m.pur_ord_account_id</td>
+                            <td>@m.pur_ord_order_id</td>
+                            <th><button id="btnSend" value="Resend Notification" class="btn btn-secondary btn-sm" onclick="ResendNotification(@m.ID);">Resend Notification</button></th>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+
+
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $("#TransDate").datepicker({
+            dateFormat: "y-M-dd"
+        });
+    });
+    function ResendNotification(ID) {
+        $.ajax({
+            url: '@Url.Action("ResendSMS", "Report")'+"?TransID="+ID,
+            method: "POST",      // The HTTP method to use for the request
+            dataType: "json",   // The type of data that you're exerciseecting back
+            data: null,
+            error: function () {
+                $.toast({
+                    heading: 'Error',
+                    text: 'Error sending notification',
+                    icon: 'error'
+                })
+            },
+            beforeSend: function () {
+
+                // A function to be called if before the request is made.
+            },
+            success: function (response) {
+                $.toast({
+                    heading: 'Success',
+                    text: 'Notification sent successfully',
+                    icon: 'success'
+                })
+                // A function to be called if the request succeeds.
+            },
+            complete: function (response) {
+
+                // A function to be called when the request finishes
+            }
+        });
+    }
+</script>

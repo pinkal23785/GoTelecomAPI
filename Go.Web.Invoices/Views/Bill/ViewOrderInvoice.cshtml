@@ -1,0 +1,152 @@
+﻿@model Go.Web.Invoices.Data.Entities.EInvoice_Audit
+@{
+    ViewData["Title"] = "Simplified Tax Invoice";
+}
+
+
+@if (Model != null)
+{
+    <div class="d-flex justify-content-center mb-3">
+        <div style="width:100%;">
+            <div class="d-flex justify-content-end mt-2 mb-2">
+                <button type="button" class="btn-sm btn-secondary" onclick="javascript: Print();">Print</button>
+            </div>
+            <div id="invoice">
+                <div class="row p-0">
+                    <img src="~/images/header-img.jpg" class="center-block img-width" />
+                </div>
+                <div class="row p-0 justify-content-center">
+
+                    <div class="col-md-5 p-0">
+                        <table width="100%">
+                            <tr>
+                                <td class="bill-text-background">Invoice No.</td>
+                                <td class="bill-text-empty">@Model.ORDER_ID</td>
+                                <td class="bill-text-background">رقم الفاتورة</td>
+                            </tr>
+                            <tr>
+                                <td class="bill-text-background">Account No</td>
+                                <td class="bill-text-empty">@Model.ACCOUNT_ID</td>
+                                <td class="bill-text-background">رقم الحساب</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-5 p-0">
+                        <table width="100%">
+                            <tr>
+                                <td class="bill-text-background">Invoice Date/Time</td>
+                                <td class="bill-text-empty">@Model.INVOICEDATE</td>
+                                <td class="bill-text-background">تاريخ ووقت الفاتورة</td>
+                            </tr>
+                            <tr>
+                                <td class="bill-text-background">Order No.</td>
+                                <td class="bill-text-empty">@Model.ORDER_ID</td>
+                                <td class="bill-text-background">رقم الطلب</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+                <div class="row mt-2 justify-content-center">
+                    <div class="col-md-12 p-0">
+                        <table width="100%">
+                            <tr>
+                                <td class="bill-text-background">Company VAT ID</td>
+                                <td class="bill-text-empty">300114291900003</td>
+                                <td class="bill-text-background">الرقم الضريبي للشركة</td>
+                            </tr>
+                            <tr>
+                                <td class="bill-text-background">Customer Name</td>
+                                <td class="bill-text-empty">@Model.CUSTOMER_NAME</td>
+                                <td class="bill-text-background">إسم العميل</td>
+                            </tr>
+                            <tr>
+                                <td class="bill-text-background">Contact Information</td>
+                                <td class="bill-text-empty">@Model.MOBILE</td>
+                                <td class="bill-text-background">معلومات الاتصال</td>
+                            </tr>
+                            <tr>
+                                <td class="bill-text-background">Payment Method</td>
+                                <td class="bill-text-empty">@Model.PAYMENT_METHOD</td>
+                                <td class="bill-text-background">طريقة الدفع</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="row justify-content-center mb-2">
+                    <table class="tbl-invoice-dtl">
+                        <tr>
+                            <td class="title">INVOICE DETAILS تفاصيل الفاتورة</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <table class="tbl-invoice-inner">
+                                    <tr>
+                                        <td class="bill-text-background col-border-bottom col-border-left w-15">
+                                            <span>السعر النهائي مع ضريبة القيمة المضافة</span>
+                                            <br />Final Price with 15% VAT
+                                        </td>
+                                        @*<td class="bill-text-background col-sign w-1" rowspan="2"></td>*@
+                                        <td class="bill-text-background col-border-bottom w-15">
+                                            <span>
+                                                ضريبة القيمة المضافة 15%
+                                            </span><br />
+                                            VAT 15%
+                                        </td>
+
+                                        @*<td class="col-sign w-1" rowspan="2"></td>*@
+                                        <td class="bill-text-background col-border-bottom w-15">
+                                            <span>سعر الخدمة قبل الضريبة </span>
+                                            <br />
+                                            Service Price VAT
+                                        </td>
+                                        @*<td class="col-sign w-1" rowspan="2"></td>*@
+                                        <td class="bill-text-background col-border-bottom w-15">
+
+                                            <span>وصف الخدمة</span>
+                                            <br />Service Description
+                                        </td>
+
+                                        <td class="bill-text-background col-border-bottom col-border-right w-15">
+                                            <span>الرقم التسلسي </span>
+                                            <br />Serial No.
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td class="col-border-bottom col-border-left w-15">@Model.PAYMENT_AMT</td>
+                                        <td class="col-border-bottom  w-15">@Model.TAX_AMT</td>
+                                        <td class="col-border-bottom  w-15">@(Model.PAYMENT_AMT- Model.TAX_AMT)</td>
+
+                                        <td class="col-border-bottom  w-15">@(string.IsNullOrEmpty(Model.ORDER_TYPE) ?"New":Model.ORDER_TYPE)</td>
+
+                                        <td class="col-border-bottom col-border-right w-15">1</td>
+
+
+                                    </tr>
+                                </table>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <table style="width:100%">
+                                <tr>
+                                    <td width="20%"><img src="@ViewBag.QrCodeUri" width="100%" /></td>
+                                    <td width="80%"><img src="~/images/invoice-footer-4.jpg" width="100%" /></td>
+                                </tr>
+                            </table>
+
+                        </tr>
+
+                    </table>
+
+                </div>
+            </div>
+            <div class="d-flex justify-content-end mt-2 mb-2">
+                <button type="button" class="btn-sm btn-secondary" onclick="javascript: Print();">Print</button>
+            </div>
+        </div>
+    </div>
+
+}

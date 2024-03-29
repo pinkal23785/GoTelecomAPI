@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Services\InstallmentPaymentOrderService.cs" />
+  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="EntityFramework" Version="6.4.4" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.10">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="Oracle.EntityFrameworkCore" Version="5.21.3" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.2" />
+		<PackageReference Include="System.ServiceModel.Duplex" Version="4.4.*" />
+		<PackageReference Include="System.ServiceModel.Http" Version="4.4.*" />
+		<PackageReference Include="System.ServiceModel.NetTcp" Version="4.4.*" />
+		<PackageReference Include="System.ServiceModel.Security" Version="4.4.*" />
+		<PackageReference Include="System.Text.Json" Version="5.0.2" />
+		<PackageReference Include="Serilog.Extensions.Logging.File" Version="2.0.0" />
+	</ItemGroup>
+	<ItemGroup>
+	  <WCFMetadata Include="Connected Services" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Connected Services\" />
+	</ItemGroup>
+
+</Project>

@@ -1,0 +1,143 @@
+﻿@model InvoiceModel
+
+
+<div class="d-flex justify-content-center mt-3">
+    <div class="involice-tbl m-0 border-0 mt-2 text-right">
+        <button type="button" class="btn-sm btn-primary" onclick="javascript: Print();">Print</button>
+    </div>
+</div>
+<div id="invoice" class="d-flex justify-content-center">
+    <table class="involice-tbl mt-3">
+
+        <tr>
+            <td colspan="2" class="center">
+                <img src="~/images/logo.png" />
+            </td>
+        </tr>
+        <tr>
+            <td align="center" colspan="2" >
+                <table>
+                    <tr>
+                        <td class="invoice-header">VAT ID:</td>
+                        <td class="invoice-header">300114291900003</td>
+                        <td class="invoice-header">
+                            : الرقم الضريبي&nbsp;
+                        </td>
+                    </tr>
+                </table>
+            </td>
+
+        </tr>
+        <tr>
+            <td align="center" colspan="2" class="invoice-header">شكراً لطلبك</td>
+        </tr>
+        <tr>
+            <td align="center" colspan="2" class="invoice-header">Thank You for Your Order</td>
+        </tr>
+        <tr>
+            <td align="center" colspan="2">
+                <table width="55%">
+                    <tr>
+                        <td width="25%" class="invoice-header">Order #: </td>
+                        <td width="25%" class="invoice-header">@Model.InvoiceNo</td>
+                        <td width="25%" class="auto-style1">:رقم الطلب</td>
+                    </tr>
+                    <tr>
+
+                        <td class="invoice-header">Invoice #: </td>
+                        <td class="invoice-header">@Model.InvoiceNo</td>
+                        <td class="auto-style1">:رقم الفاتورة</td>
+                    </tr>
+                    <tr>
+                        <td class="invoice-header">Date:</td>
+                        <td class="invoice-header">@Model.InvoiceDate</td>
+                        <td class="auto-style1">:التاريخ</td>
+                    </tr>
+                </table>
+            </td>
+
+
+        </tr>
+
+
+        <tr>
+            <td colspan="2" class="card-border">AYWA CARD NAME | اسم بطاقة أيوا </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="card-border card-value">@Model.AywaCardName</td>
+        </tr>
+        <tr>
+            <td colspan="2" class="card-border">AYWA CARD NUMBER | رقم بطاقة أيوا</td>
+        </tr>
+        <tr>
+            <td colspan="2" class="card-border card-value">@Model.AywaCardNumber</td>
+        </tr>
+        <tr><td colspan="2" class="card-border">CUSTOMER PAID METHOD | طريقة الدفع</td></tr>
+        <tr><td colspan="2" class="card-border card-value">@Model.PaymentMethod</td></tr>
+        <tr>
+            <td width="24%"><img src="@ViewBag.QrCodeUri" width="100%" /></td>
+            <td align="left">
+                <table style="width: 100%">
+
+                    <tr>
+                        <td align="right" class="invoice-header"> &nbsp; السعر قبل الضريبة | Price Before VAT:&nbsp;</td>
+                        <td align="left" class="font-weight-bold invoice-header">SR @Model.Card_Amount</td>
+                    </tr>
+                    <tr>
+
+                        <td align="right"  class="invoice-header">ضريبة القيمة المضافة&nbsp; | VAT 15%:&nbsp;</td>
+                        <td align="left" class="font-weight-bold invoice-header">SR @Model.VAT_Amount</td>
+                    </tr>
+                    <tr>
+
+                        <td align="right"  class="invoice-header"> &nbsp;&nbsp;&nbsp; السعر بعد الضريبة 
+						| Price After VAT:&nbsp;</td>
+                        <td align="left" class="font-weight-bold invoice-header">SR @Model.TotalAmount</td>
+                    </tr>
+                    <tr>
+
+                        <td align="right"  class="invoice-header">الإجمالي | TOTAL:&nbsp;</td>
+                        <td align="left" class="font-weight-bold invoice-header">SR @Model.TotalAmount</td>
+                    </tr>
+                </table>
+            </td>
+
+
+
+        </tr>
+
+        <tr>
+            <td colspan="2" height="80"></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <em class="invoice-header">For more information, visit </em> <a href="https://aywacards.go.com.sa/">
+				<em class="invoice-header">https://aywacards.go.com.sa/</em></a><em>
+                <br><em class="invoice-header">Customer Service No. 17777</em>
+            </em>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <a href="https://aywacards.go.com.sa/"><em class="invoice-header">https://aywacards.go.com.sa/</em></a><em class="invoice-header"> لمزيد من المعلومات، يرجى زيارة
+                <br><em class="invoice-header">رقم خدمة العملاء 17777
+            </em>
+            </td>
+        </tr>
+    </table>
+
+<style type="text/css">
+.auto-style1 {
+	text-align: right;
+	font-size:10px;
+}
+.auto-style2 {
+	text-align: center;
+}
+</style>
+</div>
+
+<script>
+
+   
+</script>

@@ -1,0 +1,17 @@
+﻿@{
+    Layout = null;
+}
+@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.Extensions.Options
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
+
+
+<div class="vh-100 d-flex flex-column justify-content-center align-items-center">
+    <div class="success-box d-flex justify-content-center align-items-center alert-box">
+        @Localizer["Shareholder Details Updated Successfully"]
+    </div>
+</div>

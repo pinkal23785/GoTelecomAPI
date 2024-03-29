@@ -1,0 +1,147 @@
+﻿@model Go.Web.Invoices.Data.Entities.CustomerInvoice
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@if (Model != null)
+{
+    <div class="row ">
+
+        <div class="col-xl-12">
+
+            <div class="row">
+                <img src="~/images/invoice-header.png" class="center-block" />
+            </div>
+            <div class="row justify-content-center">
+                <table width="61%" class="bill-tbl">
+                    <tr>
+                        <td class="bill-text-background">Customer Name</td>
+                        <td class="bill-text-empty">@Model.CUSTOMER_NAME</td>
+                        <td class="bill-text-background">إسم العميل</td>
+                    </tr>
+                    <tr>
+                        <td class="bill-text-background">Account No</td>
+                        <td class="bill-text-empty">@Model.ACCOUNT_NO</td>
+                        <td class="bill-text-background">رقم الحساب</td>
+                    </tr>
+                    <tr>
+                        <td class="bill-text-background">Package</td>
+                        <td class="bill-text-empty">@Model.PLAN_NAME</td>
+                        <td class="bill-text-background">الباقة</td>
+                    </tr>
+                    <tr>
+                        <td class="bill-text-background">Package Price</td>
+                        <td class="bill-text-empty">@Model.PLAN_PRICE</td>
+                        <td class="bill-text-background">سعر الباقة</td>
+                    </tr>
+                    <tr>
+                        <td class="bill-text-background">Bill Date</td>
+                        <td class="bill-text-empty">@Model.DUE_T</td>
+                        <td class="bill-text-background">تاريخ الفاتورة</td>
+                    </tr>
+                    <tr>
+                        <td class="bill-text-background">Bill Duration</td>
+                        <td class="bill-text-empty">@Model.DUE_T</td>
+                        <td class="bill-text-background">فترة الفاتورة</td>
+                    </tr>
+                    <tr>
+                        <td class="bill-text-background">Bill No</td>
+                        <td class="bill-text-empty">@Model.BILL_NO</td>
+                        <td class="bill-text-background">رقم الفاتورة</td>
+                    </tr>
+                    <tr>
+                        <td class="bill-text-background">Due Date</td>
+                        <td class="bill-text-empty">@Model.BILL_NO</td>
+                        <td class="bill-text-background">تاريخ الاستحقاق</td>
+                    </tr>
+                    <tr>
+                        <td class="bill-text-background">Credit Limit</td>
+                        <td class="bill-text-empty">@Model.BILL_NO</td>
+                        <td class="bill-text-background"> الحد الإئتماني</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="row justify-content-center mb-2">
+                <table class="tbl-invoice-dtl">
+                    <tr>
+                        <td class="title">INVOICE DETAILS تفاصيل الفاتورة</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table class="tbl-invoice-inner">
+                                <tr>
+                                    <td class="col-border">
+                                        <span>المبلغ المستحق + ضريبة القيمة </span>%المضافة 15<br />
+                                        Total Due Amount + 15% VAT
+                                    </td>
+                                    <td class="col-sign" rowspan="2">=</td>
+                                    <td class="col-border">
+                                        <span>
+                                            لمدفوعات
+                                        </span><br />
+                                        Paid Amounts
+                                    </td>
+                                    <td class="col-sign" rowspan="2">-</td>
+                                    <td class="col-border">
+                                        <span>
+                                            الفاتورة السابقة
+                                        </span><br />Previous Due Amount
+                                    </td>
+                                    <td class="col-sign" rowspan="2">+</td>
+                                    <td class="col-border">
+                                        <span>
+                                            ريبة القيمة المضافة 15%  للفاتورة الحالية
+                                        </span><br />Current Bill VAT 15%
+                                    </td>
+                                    <td class="col-sign" rowspan="2">+</td>
+                                    <td class="col-border">
+                                        <span>
+                                            لمبلغ المستحق + ضريبة القيمة المضافة 15%
+                                        </span><br />Total Due Amount + 15% VAT
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-border">@Model.TOTAL_DUE</td>
+
+                                    <td class="col-border">@Model.PAID_AMOUNT</td>
+
+                                    <td class="col-border">@Model.PREVIOUS_TOTAL</td>
+
+                                    <td class="col-border">@Model.CURRENT_TOTAL</td>
+
+                                    <td class="col-border">@Model.CURRENT_TOTAL_WV</td>
+                                </tr>
+                            </table>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td><img src="~/images/invoice-ad.png" class="center-block" /></td>
+                    </tr>
+                    <tr>
+                        <td><img src="~/images/invoice-footer-1.png" class="center-block" /></td>
+                    </tr>
+
+                    <tr>
+                        <table>
+                            <tr>
+                                <td><img src="@ViewBag.QrCodeUri" height="80" width="80" /></td>
+                                <td><img src="~/images/invoice-footer-2.png" /></td>
+                            </tr>
+                        </table>
+
+                    </tr>
+
+                </table>
+
+            </div>
+
+            <div class="row mb-2">
+
+
+            </div>
+        </div>
+    </div>
+
+}

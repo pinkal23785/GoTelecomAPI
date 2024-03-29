@@ -1,0 +1,28 @@
+2022-03-09T18:44:09.1714329+05:30  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-03-09T18:44:09.4342018+05:30  [INF] Hosting environment: "Development" (c3307c92)
+2022-03-09T18:44:09.4441982+05:30  [INF] Content root path: "D:\GoRepo\HyperPaySolution\GONetRepo\DotNetApps\Go.Service.NumberBooking" (b5d60022)
+2022-03-09T18:44:09.8390130+05:30 8000008a-0002-fe00-b63f-84710c7967bb [INF] Request for operation "ICustomerService"."UpdateNumberStatus" received (03a9fdd7)
+2022-03-09T18:44:28.6099507+05:30 8000008a-0002-fe00-b63f-84710c7967bb [ERR] Failed executing DbCommand ("127"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""EXECUTE  UpdatePortNumberStatus ?, 8001111736" (627a98df)
+2022-03-09T18:44:29.5957374+05:30 8000008a-0002-fe00-b63f-84710c7967bb [ERR] Incorrect syntax near '?'.   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteNonQuery(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryAsync(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteNonQueryAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteNonQueryAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteNonQueryAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.ExecuteSqlRawAsync(DatabaseFacade databaseFacade, String sql, IEnumerable`1 parameters, CancellationToken cancellationToken)
+   at Go.Service.NumberBooking.Data.DataService.UpdateNumberStatus(String From, String To) in D:\GoRepo\HyperPaySolution\GONetRepo\DotNetApps\Go.Service.NumberBooking\Data\DataService.cs:line 231
+   at Go.Service.NumberBooking.WebServices.CustomerService.UpdateNumberStatus(String From, String To) in D:\GoRepo\HyperPaySolution\GONetRepo\DotNetApps\Go.Service.NumberBooking\WebServices\CustomerService.cs:line 57 (c3ff26c2)
+2022-03-09T18:44:29.9571640+05:30 8000008a-0002-fe00-b63f-84710c7967bb [ERR] An error occurred processing the message (b186c967)
+Microsoft.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '?'.
+   at Go.Service.NumberBooking.WebServices.CustomerService.UpdateNumberStatus(String From, String To) in D:\GoRepo\HyperPaySolution\GONetRepo\DotNetApps\Go.Service.NumberBooking\WebServices\CustomerService.cs:line 63
+   at SoapCore.DefaultOperationInvoker.InvokeAsync(MethodInfo methodInfo, Object serviceInstance, Object[] arguments)
+   at SoapCore.SoapEndpointMiddleware`1.ProcessMessage(Message requestMessage, SoapMessageEncoder messageEncoder, IAsyncMessageFilter[] asyncMessageFilters, HttpContext httpContext, IServiceProvider serviceProvider)
+ClientConnectionId:0f45d4ae-f081-4be2-9d28-b388a10ed5ac
+Error Number:102,State:1,Class:15

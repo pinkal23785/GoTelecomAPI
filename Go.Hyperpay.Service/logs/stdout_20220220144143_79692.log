@@ -1,0 +1,46 @@
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Development
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: D:\GoRepo\HyperPaySolution\GONetRepo\DotNetApps\Go.Hyperpay.Service
+info: Go.Hyperpay.Service.Controllers.HyperPayController[0]
+      Accept:*/*
+info: Go.Hyperpay.Service.Controllers.HyperPayController[0]
+      Accept-Encoding:gzip, deflate, br
+info: Go.Hyperpay.Service.Controllers.HyperPayController[0]
+      Accept-Language:en-US,en;q=0.9,hi;q=0.8
+info: Go.Hyperpay.Service.Controllers.HyperPayController[0]
+      Cache-Control:no-cache
+info: Go.Hyperpay.Service.Controllers.HyperPayController[0]
+      Connection:close
+info: Go.Hyperpay.Service.Controllers.HyperPayController[0]
+      Content-Length:5752
+info: Go.Hyperpay.Service.Controllers.HyperPayController[0]
+      Content-Type:application/json
+info: Go.Hyperpay.Service.Controllers.HyperPayController[0]
+      Host:localhost:44327
+info: Go.Hyperpay.Service.Controllers.HyperPayController[0]
+      User-Agent:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.82 Safari/537.36
+info: Go.Hyperpay.Service.Controllers.HyperPayController[0]
+      sec-ch-ua:" Not A;Brand";v="99", "Chromium";v="98", "Google Chrome";v="98"
+info: Go.Hyperpay.Service.Controllers.HyperPayController[0]
+      x-initialization-vector:4A108F9B89C34FCBCFD011CB
+info: Go.Hyperpay.Service.Controllers.HyperPayController[0]
+      sec-ch-ua-mobile:?0
+info: Go.Hyperpay.Service.Controllers.HyperPayController[0]
+      postman-token:f65bf941-313b-c7d5-27b0-dfad3beb4f79
+info: Go.Hyperpay.Service.Controllers.HyperPayController[0]
+      x-authentication-tag:ADFBFCB438A2B94BC8F5B852E6BD6AB2
+info: Go.Hyperpay.Service.Controllers.HyperPayController[0]
+      sec-ch-ua-platform:"Windows"
+info: Go.Hyperpay.Service.Controllers.HyperPayController[0]
+      origin:chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop
+info: Go.Hyperpay.Service.Controllers.HyperPayController[0]
+      sec-fetch-site:none
+info: Go.Hyperpay.Service.Controllers.HyperPayController[0]
+      sec-fetch-mode:cors
+info: Go.Hyperpay.Service.Controllers.HyperPayController[0]
+      sec-fetch-dest:empty
+info: Go.Hyperpay.Service.Controllers.HyperPayController[0]
+      payload: {"encryptedBody":"CEE0EDAEA6A84D7EE1849B2572FE0A2E218B0B64C8F3878FED89FF842FB3D2065AFC8B31360D2DF4DCB321CD15EC2844A2C204B7F73BC2CFEA4F5A623D4021C9DF19694945CCE2336A920DCE0DEE2A372C4E3570061767D89F5FBC0A28FC9313890ECDBEF437A03432DA737BD8CFFF254289E3B5271346A5CA544017D0A2FD703D4DADAAB4CBE0A910193219A5964469BBFD22D7D5E04415866E931C8BEA5365628FC9CBC46F71E7AC9139D49687EB077A6F76D048364B339F13507A48389E0BAEF8E17E7B0D918FB0F44A07ED8ED57D9D7CAE88C40E2511DCB4B881F6DE9621DF384B5B709F197E9E8D9755064F96DF5C51A0EA9C44ACBE4BE24DB8ED9EF8A69B8874DBEF7A9B7DE3270D010FB63064F4AC4E3FBB005A868D3DDB766D00BC0F4D5492ED272E92325DC23AAA3F42791A8A3C99510D6FDC9CFCB8F54CE0F71CBA484B0311B5A1B18353EB9923C5971B613C9CDE45B336C2BA1484CA74CB01960F519E0379017B307465F34DA1F0A83879EBA2BE99D934C08A86F02B4B8EA5AF5EEEEE682D584FAA902FE2F89530A6558CC22B4ABDBA0B52CC61DC6A11A8847515C1784D45B621D370E72823A818793B9C951FCDC87E2247B9779A51687BCA61AF9431ADEAD2E196EF949023CED90CB1FE21135831D31C1727BF33FCC34237548A3BD3D385001CE6BDF97FA6B611B1C0BFD525FFAC80464F61182DF99D2753EC9415BE989A00053AC5EC56476C2197E2758F135EC593D25C1038B6FBB36B691C078D0A16B77DC9619E8B6AF56F34DA3FF4D317580EFD516CF5545573605000EC25F23A777699DE2ABBB4D38284B80007EE24EC88FAF2DF6BF07EC3AF9D6588E6432A8C82C0A7FA38047DC44BF0979E5039D3D07CB2C4F898EEA53BC360A33EE40BED938EE8835D87F95C365B8476784304E07B245F59C6E2E270F525401B98A41C0064B08ADDD1B3A5B0894961852130BD3255E271C0563B1C49EC4FF19606017EBCDABA53A8C33D93DE0E3B97B21B6EE85B35D1865B533C9226C6CEF9E57E792E3F7B742F37359C0F779D38886927415FBD3472D4F2ED417E6FC4E56B4F45A73EB8B8DC91F282EC460FB13CB8CF2F347580FB23CEE21FB87E1F120D592E33D5492F868A919B74FAD7D2DA555CAA446F9B0469D3FB1FCD237B4D1136873D3E845D6E8A495D595419E09BD92EB6F1

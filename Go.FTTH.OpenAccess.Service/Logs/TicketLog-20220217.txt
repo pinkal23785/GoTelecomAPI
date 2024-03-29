@@ -1,0 +1,3 @@
+2022-02-17T22:31:37.3405359+05:30  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-02-17T22:31:37.6270814+05:30  [INF] Hosting environment: "Development" (c3307c92)
+2022-02-17T22:31:38.4206907+05:30  [INF] Content root path: "D:\GoRepo\HyperPaySolution\GONetRepo\DotNetApps\Go.FTTH.OpenAccess.Service" (b5d60022)

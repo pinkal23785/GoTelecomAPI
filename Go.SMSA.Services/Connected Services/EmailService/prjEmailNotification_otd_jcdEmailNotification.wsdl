@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:outMsg="http://eai.atheeb.net/emailNotification" xmlns:tns="urn:stc:egate:jce:prjEmailNotification_otd_jcdEmailNotification" xmlns:errMsg="urn:stc:egate:jce:JavaException" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:inMsg="http://eai.atheeb.net/emailNotification" name="prjEmailNotification_otd_jcdEmailNotification" targetNamespace="urn:stc:egate:jce:prjEmailNotification_otd_jcdEmailNotification" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema xmlns:tns="http://eai.atheeb.net/emailNotification" targetNamespace="http://eai.atheeb.net/emailNotification" id="F0000000-268AF4382B0100-0A64772F-01">
+      <xsd:element name="EmailAck" type="tns:EmailAck" />
+      <xsd:element name="sendMail" type="tns:SendMail" />
+      <xsd:complexType name="EmailAck">
+        <xsd:sequence>
+          <xsd:element name="status" type="xsd:int" />
+          <xsd:element minOccurs="0" name="error" type="tns:Error" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Message">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="messageText" type="xsd:string" />
+          <xsd:element minOccurs="0" name="messageHTML" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Attachment">
+        <xsd:sequence>
+          <xsd:element name="attachmentContent" type="xsd:string" />
+          <xsd:element name="attachmentContentType" type="tns:string255" />
+          <xsd:element name="attachmentName" type="tns:string255" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SendMail">
+        <xsd:sequence>
+          <xsd:element name="from" type="tns:Address" />
+          <xsd:element maxOccurs="unbounded" name="to" type="tns:Address" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="cc" type="tns:Address" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="bcc" type="tns:Address" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="replyTo" type="tns:Address" />
+          <xsd:element name="subject" type="tns:string255" />
+          <xsd:element name="message" type="tns:Message" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="attachment" type="tns:Attachment" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Error">
+        <xsd:sequence>
+          <xsd:element name="errorCode" type="tns:string10" />
+          <xsd:element name="errorMessage" type="tns:string255" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Address">
+        <xsd:sequence>
+          <xsd:element name="mailId" type="tns:string200" />
+          <xsd:element minOccurs="0" name="name" type="tns:string255" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="string255">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="255" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="string200">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="200" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="string10">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="10" />
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:schema>
+    <xs:schema xmlns="urn:stc:egate:jce:JavaException" elementFormDefault="qualified" targetNamespace="urn:stc:egate:jce:JavaException" id="F1000000-268AF4382B0100-0A64772F-01" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="JavaException" type="errMsg:JavaExceptionType" />
+      <xs:complexType name="JavaExceptionType">
+        <xs:sequence>
+          <xs:element name="Type" type="xs:string" />
+          <xs:element name="Message" type="xs:string" />
+          <xs:element name="Trace" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </types>
+  <message name="JavaExceptionMessage">
+    <part name="FaultDetails" element="errMsg:JavaException" />
+  </message>
+  <message name="Output">
+    <part name="Body" element="inMsg:EmailAck" />
+  </message>
+  <message name="Input">
+    <part name="Body" element="inMsg:sendMail" />
+  </message>
+  <portType name="ExecutePortType">
+    <operation name="oprEmailNotification">
+      <input name="Input" message="tns:Input" />
+      <output name="Output" message="tns:Output" />
+      <fault name="JavaException" message="tns:JavaExceptionMessage" />
+    </operation>
+  </portType>
+  <binding name="ExecutePortTypeBinding" type="tns:ExecutePortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="oprEmailNotification">
+      <soap:operation soapAction="urn:stc:egate:jce:prjEmailNotification_otd:jcdEmailNotificationWSDL:oprEmailNotification" style="document" />
+      <soap:operation soapAction="urn:stc:egate:jce:prjEmailNotification_otd:jcdEmailNotificationWSDL:oprEmailNotification" style="document" />
+      <input name="Input">
+        <soap:body use="literal" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="Body" />
+      </input>
+      <output name="Output">
+        <soap:body use="literal" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="Body" />
+      </output>
+      <fault name="JavaException">
+        <soap:fault use="literal" name="JavaException" namespace="" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="prjEmailNotification_otd_jcdEmailNotificationService">
+    <port name="ExecutePortType" binding="tns:ExecutePortTypeBinding">
+      <soap:address location="http://172.16.64.49:18001/sendMail/ExecutePortType" />
+    </port>
+  </service>
+</definitions>

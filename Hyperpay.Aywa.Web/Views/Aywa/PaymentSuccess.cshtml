@@ -1,0 +1,172 @@
+﻿@model PaymentSucessModel
+<div id="complex-ajax" class="vh-100 d-flex flex-column justify-content-center align-items-center">
+    @Html.Partial("_PartialHeader")
+    <div class="d-flex justify-content-center align-items-center">
+        
+        @if (Model.Lang == "en")
+        {
+        <ul class="steps">
+            <li class="step step-success">
+                <a href="@ViewBag.BuyMore">
+                    <div class="step-content">
+                        <span class="step-circle">1</span>
+                        <span class="step-text">Choose Card</span>
+                    </div>
+                </a>
+            </li>
+            <li class="step step-success">
+                <div class="step-content">
+                    <span class="step-circle">2</span>
+                    <span class="step-text">View Card Details</span>
+                </div>
+            </li>
+            <li class="step step-success">
+                <div class="step-content">
+                    <span class="step-circle">3</span>
+                    <span class="step-text">Verification</span>
+                </div>
+            </li>
+            <li class="step step-success">
+                <div class="step-content">
+                    <span class="step-circle">4</span>
+                    <span class="step-text">Pay</span>
+                </div>
+            </li>
+            @if (Model.ResultCode == "000.100.112" || Model.ResultCode == "000.100.110" || Model.ResultCode == "000.000.000")
+            {
+                <li class="step step-success">
+                    <div class="step-content">
+                        <span class="step-circle">5</span>
+                        <span class="step-text">Thank You</span>
+                    </div>
+                </li>
+            }
+            else
+            {
+                <li class="step step-active">
+                    <div class="step-content">
+                        <span class="step-circle">5</span>
+                        <span class="step-text">Thank You</span>
+                    </div>
+                </li>
+            }
+        </ul>
+        }
+        else
+        {
+    <ul class="steps fontArabic">
+        @if (Model.ResultCode == "000.100.112" || Model.ResultCode == "000.100.110" || Model.ResultCode == "000.000.000")
+        {
+            <li class="step step-success">
+
+                <div class="step-content">
+                    <span class="step-circle">5</span>
+                    <span class="step-text">شكرا لك </span>
+                </div>
+            </li>
+        }
+        else
+        {
+            <li class="step step-active">
+
+                <div class="step-content">
+                    <span class="step-circle">5</span>
+                    <span class="step-text">شكرا لك </span>
+                </div>
+            </li>
+        }
+        <li class="step step-success">
+            <div class="step-content">
+                <span class="step-circle">4</span>
+                <span class="step-text">الدفع</span>
+            </div>
+        </li>
+        <li class="step step-success ">
+            <div class="step-content">
+                <span class="step-circle">3</span>
+                <span class="step-text">تحقق</span>
+            </div>
+        </li>
+        <li class="step step-success">
+            <div class="step-content">
+                <span class="step-circle">2</span>
+                <span class="step-text">معلومات البطاقة </span>
+            </div>
+        </li>
+        <li class="step step-success">
+            <a href="@ViewBag.BuyMore">
+                <div class="step-content">
+                    <span class="step-circle">1</span>
+                    <span class="step-text">اختر البطاقة</span>
+                </div>
+            </a>
+        </li>
+    </ul>
+        }
+    </div>
+    <div class="d-flex justify-content-center align-items-center">
+        @if (Model.ResultCode == "000.100.112" || Model.ResultCode == "000.100.110" || Model.ResultCode == "000.000.000")
+        {
+            if (Model.Lang == "en")
+            {
+                <div class="p-5 h6 text-center success-box">
+                    <div class="h4"> Thanks for your order.</div><br />
+                    Your Payment for Aywa card processed successfully.  <br />
+                    Your Card Number is: @Model.CardNumber
+                    <p>We have sent e-invoice to your mobile and email. OR Click <a target="_blank" href=@Model.shortURL>here</a> to view e-invoice.</p>
+                    <br />
+                    <button class="btn btn-primary" onclick="javascript:GotoHome();">Buy more</button>
+                </div>
+            }
+            else
+            {
+                <div class="p-5 h6 text-center success-box">
+                    <div class="h4">شكراً لطلبك.</div><br />
+                    تمت معالجة الدفع الخاص بك لبطاقة أيوا بنجاح. <br />
+                    @Model.CardNumber : رقم بطاقة أيوا
+                    <p>تم ارسال تفاصيل عملية الشراء إلى رقم الجوال والبريد الإلكتروني. كما يمكنك الضغط &nbsp;<a target="_blank" href=@Model.shortURL>هنا</a>&nbsp;لعرض الفاتورة </p>
+                    <p>الإلكترونية</p>
+
+                    <br />
+                    <button class="btn btn-primary" onclick="javascript:GotoHome();">شراء مرة أخرى</button>
+                </div>
+            }
+        }
+        else
+        {
+            if (Model.Lang == "en")
+            {
+                <div class="p-5 h6 text-center success-box">
+                    <div class="p-5 h4 mt-3 ">
+                        Payment processing failed
+                        <p class="h6">@Model.StatusDesc</p>
+                    </div>
+                    <br />
+                    <button class="btn btn-primary" onclick="javascript:GotoHome();">Buy more</button>
+                </div>
+            }
+            else
+            {
+                <div class="p-5 h6 text-center success-box">
+                    <div class="p-5 h4 mt-3 ">فشلت معالجة الدفع</div>
+                    <p class="h6">@Model.StatusDesc</p>
+                    <br />
+                    <button class="btn btn-primary" onclick="javascript:GotoHome();">شراء مرة أخرى</button>
+                </div>
+            }
+        }
+        @Html.HiddenFor(model => model.ResultCode)
+        @Html.HiddenFor(model => model.shortURL)
+        @Html.HiddenFor(model => model.InvoiceId)
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $("#loader").hide();
+        });
+        function GotoHome() {
+             var url = '@ViewBag.BuyMore';
+        window.location.href = url ;
+        }
+    </script>
+</div>

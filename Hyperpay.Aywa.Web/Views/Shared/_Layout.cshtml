@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GO Telecom (Etihad Atheeb Telecom), the first 4G telecom operator in Saudi Arabia</title>
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/css/spinner.css" rel="stylesheet" />
+
+    <link href="~/bootstrap-steps/dist/bootstrap-steps.css" rel="stylesheet" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/additional-methods.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/lib/jquery-ajax-unobtrusive/dist/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</head>
+<body>
+   
+    <div class="container">
+       
+        
+            @RenderBody()
+            <div id="loader" class="loading"></div>
+        
+    </div>
+
+    @*<footer class="border-top footer text-muted">
+        <div class="container text-center">
+            Copyright © 2020, Etihad Atheeb Telecommunication Company
+        </div>
+    </footer>*@
+   
+    
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

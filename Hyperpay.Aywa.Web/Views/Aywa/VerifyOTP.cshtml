@@ -1,0 +1,235 @@
+﻿@{
+    Layout = null;
+}
+@model VerifyOTPModel
+
+<div id="complex-ajax">
+    @Html.Partial("_PartialHeader")
+    <div class="d-flex justify-content-center align-items-center">
+        <div class="d-flex justify-content-center align-items-center">
+            @if (Model.Lang == "en")
+            {
+            <ul class="steps">
+                <li class="step step-success">
+                    <a asp-action="Home" asp-controller="Aywa" asp-route-Lang="@Model.Lang">
+
+                        <div class="step-content">
+                            <span class="step-circle">1</span>
+                            <span class="step-text">Choose Card</span>
+                        </div>
+
+                    </a>
+                </li>
+                <li class="step step-success">
+                    <a asp-action="GetCardDetails" asp-controller="Aywa" data-ajax="true"
+                       data-ajax-loading="#loader" data-ajax-update="#complex-ajax" asp-route-Lang="@Model.Lang" asp-route-CardType="@Model.AwayaCardType">
+                        <div class="step-content">
+                            <span class="step-circle">2</span>
+                            <span class="step-text">View Card Details</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="step step-active">
+                    <div class="step-content">
+                        <span class="step-circle">3</span>
+                        <span class="step-text">Verification</span>
+                    </div>
+                </li>
+                <li class="step">
+                    <div class="step-content">
+                        <span class="step-circle">4</span>
+                        <span class="step-text">Pay</span>
+                    </div>
+                </li>
+                <li class="step">
+                    <div class="step-content">
+                        <span class="step-circle">5</span>
+                        <span class="step-text">Thank You</span>
+                    </div>
+                </li>
+            </ul>
+            }
+            else
+            {
+            <ul class="steps fontArabic">
+                <li class="step">
+                    <div class="step-content">
+                        <span class="step-circle">5</span>
+                        <span class="step-text">شكرا لك </span>
+                    </div>
+                </li>
+                <li class="step">
+                    <div class="step-content">
+                        <span class="step-circle">4</span>
+                        <span class="step-text">الدفع</span>
+                    </div>
+                </li>
+                <li class="step step-active">
+                    <div class="step-content">
+                        <span class="step-circle">3</span>
+                        <span class="step-text">تحقق</span>
+                    </div>
+                </li>
+                <li class="step step-success">
+                    <a asp-action="GetCardDetails" asp-controller="Aywa" data-ajax="true"
+                       data-ajax-loading="#loader" data-ajax-update="#complex-ajax" asp-route-Lang="@Model.Lang" asp-route-CardType="@Model.AwayaCardType">
+                        <div class="step-content">
+                            <span class="step-circle">2</span>
+                            <span class="step-text">معلومات البطاقة </span>
+                        </div>
+                    </a>
+                </li>
+                <li class="step step-success">
+                    <a asp-action="Home" asp-controller="Aywa" asp-route-Lang="@Model.Lang">
+                        <div class="step-content">
+                            <span class="step-circle">1</span>
+                            <span class="step-text">اختر البطاقة</span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+            }
+        </div>
+    </div>
+    <div class=" d-flex justify-content-center align-items-center mt-5">
+        <div class=" form-group w-50 ">
+            <form id="verifyOTP" asp-controller="Aywa" asp-action="VerifyOTP" data-ajax="true" data-ajax-method="post"
+                  data-ajax-loading="#loader" data-ajax-update="#complex-ajax">
+                <div class="otp-title">@(Model.Lang=="en"?"OTP Code": "!التحقق الآن")</div>
+                <div class="form-row payment-row mt-3">
+
+                    <div class="form-group col-md-12 d-flex justify-content-center payment-title alert-info">
+                        @(Model.Lang=="en"?"We have sent OTP code to your mobile and email":"تم إرسال رمز التحقق إلى رقم الجوال و البريد الإلكتروني")
+                    </div>
+                    @{
+                        string cssClass = Model.Lang == "en" ? "form-control payment-input" : "form-control payment-input text-right";
+                        string VerificationText = Model.Lang == "en" ? "Enter Verification code" : "أدخل رمز التحقق";
+                    }
+                    <div class="form-group col-md-12">
+                        @Html.TextBoxFor(model => model.OTP, new { @class = @cssClass, @placeholder = @VerificationText })
+
+                        @if (Model.Lang == "en")
+                        {
+                        <span asp-validation-for="OTP">You must provide a OTP</span>
+                        }
+                        else
+                        {
+                        <span asp-validation-for="OTP" class="d-flex flex-column-reverse text-right">الرجاء ادخال رمز التحقق</span>
+                        }
+                        <div asp-validation-summary="All" class="text-danger"></div>
+
+                        @Html.HiddenFor(model => model.Mobile)
+                        @Html.HiddenFor(model => model.Email)
+                        @Html.HiddenFor(model => model.CardAmount)
+                        @Html.HiddenFor(model => model.AwayaCardType)
+                        @Html.HiddenFor(model => model.Lang)
+                    </div>
+
+
+                    <div class="form-group col-md-12 d-flex flex-column justify-content-center">
+                        <input type="submit" title="Submit" value="@(Model.Lang=="en"?"Submit":"إرسال")" class="btn btn-primary btn-block" />
+
+
+                        <a asp-action="Index" asp-controller="Aywa" asp-route-Lang="@Model.Lang" asp-route-CardAmount="@Model.CardAmount"
+                           asp-route-AwayaCardType="@Model.AwayaCardType"
+                           data-ajax="true"
+                           data-ajax-loading="#loader" data-ajax-update="#complex-ajax" class="btn-link text-center mt-3">@(Model.Lang=="en"?"Back":"رجوع")</a>
+
+                    </div>
+
+                    <div class="timer-container col-md-12 d-flex justify-content-center">
+                        @(Model.Lang=="en"?"Remaining time to enter the sent code: ": "الوقت المتبقي لإدخال رمز التحقق")&nbsp;<div class="timer"></div>
+                    </div>
+
+                    <div id="dvOTPResend" class="col-md-12 d-flex justify-content-center">
+                        <a href="javascript:void(0);" onclick="javascript: ResendOTP();"> @(Model.Lang=="en"?"Resend OTP": "إعادة إرسال رمز التحقق")</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+
+
+    <script>
+        //let timerOn = false;
+        $(document).ready(function () {
+            //startTimer();
+            clearTimeout(timeout);
+            timerOn = false;
+            $('.timer').html('');
+            debugger;
+            remaining = 120;
+            timerOn = true;
+            timer(remaining);
+
+        });
+
+
+
+
+
+    </script>
+</div>
+
+<script type="text/javascript">
+    //$(document).ready(function () {
+    //    //startTimer();
+    //    timer(120);
+    //});
+    let remaining = 120;
+    let timerOn = true;
+    let timeout;
+    function timer(remaining) {
+
+        $("#dvOTPResend").css("visibility", "hidden");
+        $(".timer-container").css("visibility", "visible")
+
+        var m = Math.floor(remaining / 60);
+        var s = remaining % 60;
+
+        m = m < 10 ? '0' + m : m;
+        s = s < 10 ? '0' + s : s;
+        $('.timer').text(m + ':' + s);
+        remaining -= 1;
+        if (remaining >= 0 && timerOn) {
+            timeout= setTimeout(function () {
+                timer(remaining);
+            }, 1000);
+            return;
+        }
+
+        if (!timerOn) {
+            // Do validate stuff here
+
+            return;
+        }
+
+        // Do timeout stuff here
+        $("#dvOTPResend").css("visibility", "visible");
+        $(".timer-container").css("visibility", "hidden");
+    }
+    function ResendOTP() {
+        var model = { Mobile: $("#Mobile").val(), Email: $("#Email").val(), Lang: $("#Lang").val() };
+
+        $.ajax({
+                url: '@Url.Action("ResendOTP")',
+                dataType: "json",
+                type: "POST", //to do a post request
+                contentType: 'application/json; charset=utf-8', //define a contentType of your request
+                cache: false,
+                data: JSON.stringify(model), // here you can pass arguments to your request if you need
+            success: function (data) {
+         // data is your result from controller
+            if (data == true) {
+            timer(120);
+            }
+        },
+        error: function (xhr) {
+            alert('error');
+        }
+    });
+    }
+
+</script>

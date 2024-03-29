@@ -1,0 +1,193 @@
+﻿
+
+@model IEnumerable<Hyperpay.Aywa.Web.Data.Entities.PrisonsAywaaCardType>
+@*@Html.Partial("_PartialHeader")*@
+<partial name="_PartialHeader" model="@ViewBag.Lang" />
+
+<div id="complex-ajax">
+    <div class="d-flex justify-content-center align-items-center">
+        @if(ViewBag.Lang == "en"){
+        <ul class="steps">
+            <li class="step step-active">
+                <div class="step-content">
+                    <span class="step-circle">1</span>
+                    <span class="step-text">Choose Card</span>
+                </div>
+            </li>
+            <li class="step">
+                <div class="step-content">
+                    <span class="step-circle">2</span>
+                    <span class="step-text">View Card Details</span>
+                </div>
+            </li>
+            <li class="step">
+                <div class="step-content">
+                    <span class="step-circle">3</span>
+                    <span class="step-text">Verification</span>
+                </div>
+            </li>
+            <li class="step">
+                <div class="step-content">
+                    <span class="step-circle">4</span>
+                    <span class="step-text">Pay</span>
+                </div>
+            </li>
+            <li class="step">
+                <div class="step-content">
+                    <span class="step-circle">5</span>
+                    <span class="step-text">Thank You</span>
+                </div>
+            </li>
+        </ul>
+
+    }
+    else
+    {
+        <ul class="steps fontArabic">
+            <li class="step">
+                <div class="step-content">
+                    <span class="step-circle">5</span>
+                    <span class="step-text">شكرا لك </span>
+                </div>
+            </li>
+            <li class="step">
+                <div class="step-content">
+                    <span class="step-circle">4</span>
+                    <span class="step-text">الدفع</span>
+                </div>
+            </li>
+            <li class="step">
+                <div class="step-content">
+                    <span class="step-circle">3</span>
+                    <span class="step-text">تحقق</span>
+                </div>
+            </li>
+            <li class="step">
+                <div class="step-content">
+                    <span class="step-circle">2</span>
+                    <span class="step-text">معلومات البطاقة </span>
+                </div>
+            </li>
+            <li class="step step-active">
+                <div class="step-content">
+                    <span class="step-circle">1</span>
+                    <span class="step-text">اختر البطاقة</span>
+                </div>
+            </li>
+        </ul>
+
+    }
+    </div>
+    <div class="d-flex justify-content-center pl-5">
+
+        <div _ngcontent-kke-c4="" class="container" >
+            <div _ngcontent-kke-c4="" class="row mt-3">
+                <!---->
+                <table>
+                    <tr>
+                        @if(ViewBag.Lang == "en"){
+                        <h6 _ngcontent-kke-c4="" style="padding-left: 20px;margin-top: 42px; color: #e7263f; font-size:1rem;">
+                            Choose Your Card
+                        </h6>
+                    }
+                    else{
+                        <h6 _ngcontent-hjx-c4="" style="color: #e7263f; text-align:right; width:90%;">اختر البطاقة</h6>
+                    }
+
+                        @foreach (var item in Model)
+                        {
+                        <td>
+                            @{string imageName = item.NAME + ".png"; }
+                            <img _ngcontent-kke-c4="" style="width: 81%;" src="~/images/@imageName" />
+                            <div _ngcontent-kke-c4="" class="text-center mr-5">
+                                <form id="otpform" asp-controller="Aywa" asp-action="GetCardDetails" data-ajax="true" data-ajax-method="post"
+                                      data-ajax-loading="#loader" data-ajax-update="#complex-ajax">
+                                    <input type="submit" class="btn btn-primary" value="@(ViewBag.Lang=="en"?"Buy":"شراء")" />
+                                    <input type="hidden" name="CardType" value="@item.ID" />
+                                    <input type="hidden" name="Lang" value="@ViewBag.Lang" />
+
+                                </form>
+                            </div>
+
+                        </td>
+                    }
+                    </tr>
+                </table>
+
+            </div>
+            @if(ViewBag.Lang=="en"){
+            <div _ngcontent-kke-c4="" class="row" style="margin-top: 30px;">
+                <div _ngcontent-kke-c4="" class="col" style="width: 1020px;">
+                    <h4 _ngcontent-kke-c4="" style="padding-top: 5px; color: #e7263f; font-size:1rem;" class="pb-3">Aywa call charges are as follow</h4>
+                    <table _ngcontent-kke-c4="" align="center" cellpadding="0" cellspacing="0" style="width: 100%">
+                        <tr _ngcontent-kke-c4="" class="headtbl" style="background-color: #cb3445;height: 30px;color: #fff;font-size: 14px;">
+                            <td _ngcontent-kke-c4="" style="padding-left: 6px;">Service</td>
+                            <td _ngcontent-kke-c4="">Price</td>
+                        </tr>
+                        <tr _ngcontent-kke-c4="" class="septbl">
+                            <td _ngcontent-kke-c4="" class="auto-style1">Local calls (Inside city)</td>
+                            <td _ngcontent-kke-c4="" class="auto-style1"><strong _ngcontent-kke-c4="">SAR <span _ngcontent-kke-c4="" class="normalfont">0.23</span> / minute</strong></td>
+                        </tr>
+                        <tr _ngcontent-kke-c4="" class="graytbl">
+                            <td _ngcontent-kke-c4="" class="auto-style1">National calls (inside Kingdom)</td>
+                            <td _ngcontent-kke-c4="" class="auto-style1"><strong _ngcontent-kke-c4="">SAR <span _ngcontent-kke-c4="" class="normalfont">0.23</span> / minute</strong></td>
+                        </tr>
+                        <tr _ngcontent-kke-c4="" class="septbl">
+                            <td _ngcontent-kke-c4="" class="auto-style1">Mobile Calls</td>
+                            <td _ngcontent-kke-c4="" class="auto-style1"><strong _ngcontent-kke-c4="">SAR <span _ngcontent-kke-c4="" class="normalfont">0.46</span> / minute</strong></td>
+                        </tr>
+                        <tr _ngcontent-kke-c4="" class="graytbl">
+                            <td _ngcontent-kke-c4="" class="auto-style1">International Calls</td>
+                            <td _ngcontent-kke-c4="" class="auto-style1">Same as following price for each country and to add <span _ngcontent-kke-c4="" class="normalfont">15%</span> VAT(<a _ngcontent-kke-c4="" href="https://www.go.com.sa/atheeb-cms/uploads/documents/calling_rate/All_International_Rates.pdf" target="_blank">download file</a>)</td>
+                        </tr>
+                    </table>
+                    <h4 _ngcontent-kke-c4="" style="padding-top: 5px; color: #e7263f; font-size:1rem;" class="mt-3">*Price includes <span _ngcontent-kke-c4="" class="normalfont">15%</span> VAT</h4>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div _ngcontent-kke-c4="" class="row" style="margin-left: 20px; margin-top: 30px;">
+                <div _ngcontent-kke-c4="" class="col" style="width: 1020px;">
+                    <h4 _ngcontent-kke-c4="" style="padding-top: 5px; color: #e7263f; font-size:1rem; text-align:right" class="pb-3 fontArabic">أجور المكالمات عبر بطاقات أيوا</h4>
+                    <table _ngcontent-kke-c4="" align="center" cellpadding="0" cellspacing="0" style="width: 100%" class="text-right">
+                        <tr _ngcontent-kke-c4="" class="headtbl" style="background-color: #cb3445;height: 30px;color: #fff;font-size: 14px;">
+
+                            <td _ngcontent-kke-c4="" class="fontArabic">السعر</td>
+                            <td _ngcontent-kke-c4="" class="fontArabic pr-2">السعر</td>
+                        </tr>
+                        <tr _ngcontent-kke-c4="" class="septbl">
+                            <td _ngcontent-kke-c4=""><strong _ngcontent-kke-c4=""><strong _ngcontent-qgu-c4="">ريال <span _ngcontent-qgu-c4="" class="normalfont">0.23</span> / دقيقة</strong></td>
+                            <td _ngcontent-kke-c4="" class="fontArabic pr-2"> (المكالمات المحلية (داخل المدينة </td>
+
+                        </tr>
+                        <tr _ngcontent-kke-c4="" class="graytbl">
+                            <td _ngcontent-kke-c4=""><strong _ngcontent-kke-c4=""><strong _ngcontent-qgu-c4="">ريال <span _ngcontent-qgu-c4="" class="normalfont">0.23</span> / دقيقة</strong></td>
+                            <td _ngcontent-kke-c4="" class="fontArabic pr-2">(المكالمات الداخلية (داخل المملكة </td>
+
+                        </tr>
+                        <tr _ngcontent-kke-c4="" class="septbl">
+                            <td _ngcontent-kke-c4=""><strong _ngcontent-kke-c4=""><strong _ngcontent-qgu-c4="">ريال <span _ngcontent-qgu-c4="" class="normalfont">0.46</span> / دقيقة</strong></td>
+                            <td _ngcontent-kke-c4="" class="fontArabic pr-2">مكالمات الجوال</td>
+
+                        </tr>
+                        <tr _ngcontent-kke-c4="" class="graytbl">
+                            <td _ngcontent-kke-c4="" class="auto-style1">حسب تعرفة كل دولة وسيضاف عليها ضريبة القيمة المضافة <span _ngcontent-qgu-c4="" class="normalfont">15%</span> (<a _ngcontent-qgu-c4="" href="https://www.go.com.sa/atheeb-cms/uploads/documents/calling_rate/All_International_Rates.pdf" target="_blank">تحميل الملف</a>)</td>
+                            <td _ngcontent-kke-c4="" class="auto-style1">المكالمات الدولية</td>
+
+                        </tr>
+                    </table>
+                    <p _ngcontent-qgu-c4="" style="padding-top: 5px; color: #e7263f;" class="text-right">الأسعار تشمل <span _ngcontent-qgu-c4="" class="normalfont">15%</span> ضريبة القيمة المضافة <span>*</span></p>
+                </div>
+            </div>
+        }
+        </div>
+    </div>
+
+    @*<script>
+    function BuyCard(amount, cardid,VAT,Name) {
+        var url = '@Url.Action("GetCardDetails", "Aywa")';
+        window.location.href = url + "?amount=" + amount + "&CardType=" + cardid +"&VAT="+ VAT+"&Name="+Name+"&Lang="+'@ViewBag.Lang';
+    }
+    </script>*@
+</div>

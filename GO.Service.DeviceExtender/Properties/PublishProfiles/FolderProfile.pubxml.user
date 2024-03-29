@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>D:\GoRepo\HyperPaySolution\GONetRepo\DotNetApps\GO.Service.DeviceExtender\bin\Release\netcoreapp3.1\publish\</_PublishTargetUrl>
+    <History>True|2022-02-07T18:43:16.2760026Z;True|2022-02-07T23:42:18.9549284+05:30;True|2022-02-07T13:05:40.0259789+05:30;True|2022-02-07T02:09:49.9029222+05:30;</History>
+  </PropertyGroup>
+</Project>

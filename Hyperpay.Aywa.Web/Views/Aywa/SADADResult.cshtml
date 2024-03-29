@@ -1,0 +1,122 @@
+﻿
+@model Hyperpay.Aywa.Web.SADAD.SADADUploadResponse
+
+@Html.Partial("_PartialHeader")
+
+<div class="d-flex justify-content-center align-items-center">
+    @if(Model.Lang=="en"){
+    <ul class="steps">
+        <li class="step step-success">
+            <a href="@ViewBag.BuyMore">
+                <div class="step-content">
+                    <span class="step-circle">1</span>
+                    <span class="step-text">Choose Card</span>
+                </div>
+            </a>
+        </li>
+        <li class="step step-success">
+            <div class="step-content">
+                <span class="step-circle">2</span>
+                <span class="step-text">View Card Details</span>
+            </div>
+        </li>
+        <li class="step step-success">
+            <div class="step-content">
+                <span class="step-circle">3</span>
+                <span class="step-text">Verification</span>
+            </div>
+        </li>
+        <li class="step step-success">
+            <div class="step-content">
+                <span class="step-circle">4</span>
+                <span class="step-text">Pay</span>
+            </div>
+        </li>
+        <li class="step step-success">
+            <div class="step-content">
+                <span class="step-circle">5</span>
+                <span class="step-text">Thank You</span>
+            </div>
+        </li>
+    </ul>
+    }
+     else
+        {
+    <ul class="steps fontArabic">
+        <li class="step step-success">
+            <div class="step-content">
+                <span class="step-circle">5</span>
+                <span class="step-text">شكرا لك </span>
+            </div>
+        </li>
+        <li class="step step-success">
+            <div class="step-content">
+                <span class="step-circle">4</span>
+                <span class="step-text">الدفع</span>
+            </div>
+        </li>
+        <li class="step step-success ">
+            <div class="step-content">
+                <span class="step-circle">3</span>
+                <span class="step-text">تحقق</span>
+            </div>
+        </li>
+        <li class="step step-success">
+            <div class="step-content">
+                <span class="step-circle">2</span>
+                <span class="step-text">معلومات البطاقة </span>
+            </div>
+        </li>
+        <li class="step step-success">
+            <a href="@ViewBag.BuyMore">
+                <div class="step-content">
+                    <span class="step-circle">1</span>
+                    <span class="step-text">اختر البطاقة</span>
+                </div>
+            </a>
+        </li>
+    </ul>
+        }
+</div>
+<div class="d-flex justify-content-center align-items-center">
+    @Html.HiddenFor(model=>model.Lang)
+    @Html.HiddenFor(model=>model.BillNumber)
+
+
+    <div class="p-5 h5 text-center success-box">
+        @if (Model.Lang == "en")
+        {
+            <div class="h2"> Thanks for your order.</div><br />
+            <span>The bill of Amount @Model.Amount SAR was uploaded to SADAD</span> <br />
+            <p>Please, submit the payment in SADAD using Bill # @Model.BillNumber to get the Card Number</p>
+            <p>Note: SADAD Bill will be ready within 5 minutes</p>
+
+            <br />
+            <button class="btn btn-primary" onclick="javascript:GotoHome();">Buy more</button>
+        }
+        else
+        {
+            <div class="h2"> شكرا لطلبك.</div><br />
+            <span>تم رفع فاتورة بمبلغ </span>@Model.Amount<span>
+                ريال سعودي على نظام سداد
+            </span>
+            <br />
+            <p>يرجى السداد باستخدام الفاتورة رقم @Model.BillNumber للحصول على رقم البطاقة</p>
+            <p>ملحوظة: فاتورة سداد ستكون جاهزة خلال 5 دقائق</p>
+
+            <br />
+            <button class="btn btn-primary" onclick="javascript:GotoHome();">اشتري اكثر</button>
+        }
+    </div>
+
+</div>
+
+<script>
+   $(document).ready(function () {
+       $("#loader").hide();
+   });
+   function GotoHome() {
+        var url = '@ViewBag.BuyMore';
+   window.location.href = url ;
+   }
+</script>

@@ -1,0 +1,784 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+@font-face {
+    font-family: NotoSans;
+    src: url(fonts/NotoNaskhArabic-Regular.ttf);
+}
+
+@font-face {
+    font-family: RedexPro;
+    src: url(fonts/ReadexPro-Regular.ttf);
+}
+@font-face {
+    font-family: Gilroy-Regular;
+    src: url(fonts/Gilroy-Regular.ttf);
+}
+
+@font-face {
+    font-family: Gilroy-Medium;
+    src: url(fonts/Gilroy-Medium.ttf);
+}
+
+@font-face {
+    font-family: Gilroy-Bold;
+    src: url(fonts/Gilroy-Bold.ttf);
+}
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+    color: #0366d6;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+}
+
+.center-block {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.bill-text-background {
+    background-color: #FBD4B4;
+    width: 25%;
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 5px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.bill-text-empty {
+    width: 35%;
+    border: dotted 0.5px gray;
+    text-align: center;
+    font-size: 12px;
+}
+
+.bill-tbl {
+    margin-top: 8px;
+    border-collapse: separate;
+    border-spacing: 3px;
+    width: 100%;
+}
+
+.tbl-invoice-dtl {
+    width: 100%;
+    font-size: 0.7rem;
+    table-layout: fixed;
+    margin-top: 10px;
+}
+
+    .tbl-invoice-dtl .title {
+        text-align: center;
+        margin-bottom: 10px;
+        font-weight: bold;
+        color: red;
+        padding-bottom: 10px;
+    }
+
+.tbl-invoice-inner tr td span {
+    color: red;
+    width: 100%;
+}
+
+.col-border {
+    border: 1px solid #ccc;
+    height: 55px;
+    width: 20%;
+    vertical-align: middle;
+    text-align: center;
+    margin: 10px;
+}
+
+.col-border-left {
+    border-left: 1px solid #ccc;
+}
+
+.col-border-right {
+    border-right: 1px solid #ccc;
+}
+
+.col-border-bottom {
+    border-bottom: 1px solid #ccc;
+    height: 55px;
+    width: 20%;
+    vertical-align: middle;
+    text-align: center;
+    margin: 10px;
+}
+
+.img-width {
+    width: 48%;
+}
+
+.img-width-tbl {
+    width: 100%;
+}
+
+.col-sign {
+    vertical-align: middle;
+    padding: 4px;
+}
+
+.btn-secondary {
+    background-color: #77BF43 !important;
+    color: #fff !important;
+    border: none !important;
+}
+
+.w-15 {
+    width: 15%;
+}
+
+.w-1 {
+    width: 1%;
+}
+
+.arabic-title {
+    color: #0c6775;
+    font-weight: bold;
+    font-family: RedexPro;
+    font-size: 1rem;
+    padding-right: 10px;
+}
+
+.english-title {
+    color: #000;
+    font-family: Gilroy-Bold;
+    font-size: 1rem;
+    padding-right: 10px;
+}
+
+.bill-table {
+    background: #E7F0F1;
+    border: 1px solid #E7F0F1;
+    border-radius: 10px;
+    padding: 1.5rem !important;
+}
+
+    .bill-table table {
+        background-color: transparent;
+        width: 100%;
+    }
+
+    .bill-table tbody tr th {
+        font-size: 0.4rem;
+        color: #0c6775;
+        padding: 1.8px;
+        font-family: Gilroy-Regular;
+    }
+
+    .bill-table tr td {
+        font-size: 0.4rem;
+        color: #0c6775;
+        padding: 1.8px;
+        text-align: center;
+        width: 40%;
+        color: #333;
+        font-weight: 600;
+        font-family: Gilroy-Regular;
+    }
+
+    .bill-table tr th:last-child {
+        white-space: nowrap;
+        font-family: RedexPro;
+        direction: rtl;
+        text-align: right;
+        color: #0c6775;
+    }
+
+.invoice-summary-end {
+    font-weight: bold;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #0c6775;
+    text-align: left;
+    padding: 0;
+    font-family: Gilroy-Regular;
+}
+
+.invoice-summary-arabic {
+    font-weight: bold;
+    font-size: 0.8rem;
+    font-family: RedexPro;
+    color: #0c6775;
+    text-align: right;
+    padding: 0 !important;
+}
+
+.text-eng {
+    font-family: Gilroy-Medium;
+}
+
+.text-arabic {
+    font-family: RedexPro;
+}
+
+.outstanding {
+    color: #fff;
+    height: 100px;
+    vertical-align: middle;
+}
+
+
+.outstanding, content div {
+    text-align: center;
+    height: 88px;
+}
+
+.back-color {
+    background-color: #0c6775;
+}
+
+
+
+.tbl-invoice .box-content {
+    min-width: 100px;
+    padding: 0px;
+}
+
+.tbl-invoice .operator {
+    width: 25px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    left: 4px;
+    position: relative;
+}
+
+.tbl-invoice-dtl {
+    border: 0.2px solid;
+    border-color: #0c6775;
+    height: 100px;
+    /*padding: 2px;*/
+    width: 100%;
+    border-collapse: initial;
+    border-radius: 1em;
+    overflow: hidden;
+    border-spacing: 0px;
+}
+
+    .tbl-invoice-dtl tr td {
+        text-align: center;
+        font-weight: bold;
+        padding: 10px;
+        vertical-align: middle;
+    }
+
+    .tbl-invoice-dtl .content {
+        border-bottom: 1px solid #0c6775;
+        height: 88px;
+        vertical-align: middle;
+        padding: 0px;
+    }
+
+        .tbl-invoice-dtl .content div:first-child {
+            color: #0c6775;
+            font-family: RedexPro;
+        }
+
+
+.tbl-monthly {
+    padding: 0px;
+    width: 100%;
+    border: 1px solid #0c6775;
+    border-radius: 25px;
+    font-size: 11px;
+    border-collapse: initial;
+    border-radius: 1em;
+    overflow: hidden;
+    border-spacing: 0px;
+}
+
+    .tbl-monthly .tbl-monthly-header {
+        background-color: #0c6775;
+        color: #fff;
+        font-weight: bold;
+    }
+
+        .tbl-monthly .tbl-monthly-header td {
+            align-items: center;
+            text-align: center;
+            padding: 10px;
+        }
+
+    .tbl-monthly .tbl-monthly-dtl {
+        border-bottom: 0.5px solid #ccc;
+        margin-top: 5px;
+    }
+
+        .tbl-monthly .tbl-monthly-dtl td {
+            align-items: center;
+            text-align: center;
+            font-weight: bold;
+            font-family: Gilroy-Regular;
+            padding: 1rem;
+        }
+
+    .tbl-monthly .tbl-monthly-footer td {
+        padding: 5px 0px 5px 0px;
+    }
+
+        .tbl-monthly .tbl-monthly-footer td table {
+            align-items: center;
+            align-self: center;
+        }
+
+.tbl-monthly-footer-dtl {
+    border-top: 1px solid #eee;
+    width: 100%;
+}
+
+    .tbl-monthly-footer-dtl tr td:nth-child(2) {
+        width: 60%;
+        text-align: center;
+        vertical-align: middle;
+        border-spacing: 2px;
+    }
+
+    .tbl-monthly-footer-dtl tr td:first-child {
+        font-family: Gilroy-Medium;
+        padding: 8px;
+    }
+
+    .tbl-monthly-footer-dtl tr:last-child td {
+        font-family: Gilroy-Bold;
+    }
+
+        .tbl-monthly-footer-dtl tr:last-child td:last-child {
+            font-family: RedexPro;
+            font-weight: bold;
+        }
+
+    .tbl-monthly-footer-dtl tr td:last-child {
+        font-family: RedexPro;
+        text-align: right;
+        padding-right: 10px;
+    }
+
+    .tbl-monthly-footer-dtl tr td div {
+        background-color: #EEEEEF;
+        padding: 3px;
+        border-radius: 5px;
+        font-weight: bold;
+        color: #0c6775;
+    }
+
+.image-width {
+    width: 100%;
+}
+
+.arabic {
+    font-family: RedexPro;
+}
+
+.banner {
+    height: 89%;
+}
+
+.footer-text {
+    color: #0c6775;
+    font-weight: bold;
+}
+
+.fix-box {
+    white-space: nowrap;
+    max-width: 100px !important;
+    overflow: hidden;
+}
+
+.logo {
+    width: 100% !important;
+}
+
+@media (min-width: 350px) {
+    .container {
+        width: 100% !important;
+    }
+
+    .mr-bill-table {
+        padding: 0px !important;
+        margin: 0px !important;
+    }
+
+    .bill-table {
+        padding: 2rem !important;
+    }
+
+    .tbl-invoice .box-content {
+        min-width: 35px;
+    }
+
+    .banner {
+        padding: 0 !important;
+        height: 90%;
+        width: 100%;
+    }
+
+    .image-width {
+        width: 100%;
+    }
+
+    .tbl-invoice-dtl {
+        border: 1px solid #0c6775;
+        border-radius: 25px;
+        height: 100px;
+        /* padding: 2px; */
+        width: 100%;
+        border-collapse: initial;
+        border-radius: 1em;
+        overflow: hidden;
+        border-spacing: 0px;
+    }
+
+    .tbl-invoice-dtl {
+        width: 100%;
+        font-size: 0.5rem;
+        table-layout: fixed;
+        margin-top: 10px;
+    }
+
+        .tbl-invoice-dtl tr td {
+            text-align: center;
+            font-weight: bold;
+            padding: 0px;
+            vertical-align: middle;
+        }
+
+    .tbl-invoice .operator {
+        width: 11px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        left: 0px;
+        position: relative;
+    }
+
+    .page-details {
+        /*padding: 5px !important;*/
+        padding: 0px !important;
+    }
+
+    .invoice-summary-end {
+        font-size: 0.7rem;
+    }
+
+    .tbl-monthly {
+        font-size: 0.7rem;
+    }
+
+        .tbl-monthly .tbl-monthly-dtl td {
+            padding: 0.5rem;
+        }
+
+    .tbl-invoice-dtl .content {
+        height: 68px;
+    }
+
+    .outstanding, content div {
+        text-align: center;
+        height: 68px;
+    }
+
+    .img-width {
+        width: 100%;
+    }
+}
+
+@media (min-width: 576px) {
+    .container {
+        width: 100% !important;
+    }
+
+    .mr-bill-table {
+        padding: 0px !important;
+        margin: 0px !important;
+        padding-top: 7px !important;
+    }
+
+    .bill-table {
+        padding: 2rem !important;
+    }
+
+    .tbl-invoice .box-content {
+        min-width: 35px;
+    }
+
+    .img-width {
+        width: 100%;
+    }
+
+    .banner {
+        padding: 0 !important;
+        height: 100%;
+    }
+}
+
+
+@media (min-width: 768px) {
+    .container {
+        width: 100% !important;
+    }
+
+    .bill-table {
+        padding: 1.1rem !important;
+    }
+
+    .banner {
+        padding-top: 0.3rem !important;
+        height: 92%;
+        border-radius: 10px;
+        /*padding-left: 1rem !important;*/
+    }
+
+    .img-width {
+        width: 100%;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        width: 65% !important;
+    }
+
+    .bill-table {
+        padding: 1.4rem !important;
+    }
+
+    .image-width {
+        width: 100%;
+    }
+
+    .img-width {
+        width: 48%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width: 65% !important;
+        border-radius: 10px;
+    }
+
+    .image-width {
+        width: 100%;
+    }
+
+    .img-width {
+        width: 25%;
+    }
+
+    .invoice-summary-end {
+        font-size: 0.7rem;
+    }
+
+    .tbl-monthly {
+        font-size: 0.7rem;
+    }
+
+        .tbl-monthly .tbl-monthly-dtl td {
+            padding: 0.5rem;
+        }
+
+    .tbl-invoice-dtl {
+        width: 100%;
+        font-size: 0.7rem;
+        table-layout: fixed;
+        margin-top: 10px;
+    }
+
+        .tbl-invoice-dtl tr td {
+            text-align: center;
+            font-weight: bold;
+            padding: 2px;
+            vertical-align: middle;
+        }
+
+    .tbl-invoice .operator {
+        width: 11px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        left: 0px;
+        position: relative;
+    }
+}
+
+
+@media print {
+    @page {
+        size: 21cm 29.7cm;
+    }
+
+    body {
+        -webkit-print-color-adjust: exact;
+        -moz-print-color-adjust: exact;
+        -ms-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .img-width {
+        width: 5cm !important;
+    }
+
+    .mycontainer {
+        background-color: #000 !important;
+        -webkit-print-color-adjust: exact;
+    }
+
+    .logo {
+        width: 100% !important;
+    }
+
+    .logo-container {
+        margin-top: 1.5cm;
+        margin-bottom: 1cm;
+    }
+
+    .bill-table {
+        padding: 0.5cm !important;
+    }
+
+        .bill-table table {
+            background-color: #E7F0F1;
+            -webkit-print-color-adjust: exact;
+            padding: 1.5rem !important
+        }
+
+        .bill-table tbody tr th {
+            font-size: 0.72rem;
+            font-weight: normal;
+            padding: 0.07cm;
+        }
+
+        .bill-table tr td {
+            font-size: 0.72rem;
+            font-weight: normal;
+            padding: 0.07cm;
+        }
+
+    .tbl-monthly .tbl-monthly-dtl td {
+        font-size: 0.7rem;
+        padding: 1rem;
+    }
+
+    .tbl-monthly-footer-dtl tr td:first-child {
+        font-size: 0.7rem;
+    }
+
+    .tbl-monthly-footer-dtl tr td:last-child {
+        font-size: 0.7rem;
+    }
+
+    .tbl-monthly-footer-dtl tr td div {
+        font-size: 0.7rem;
+    }
+
+    .banner {
+        height: 90% !important;
+        padding-top: 0.3rem !important;
+        border-radius: 10px;
+    }
+
+    .arabic-title {
+        color: #0c6775;
+        font-weight: bold;
+        font-family: RedexPro;
+        font-size: 1.5rem;
+    }
+
+    .english-title {
+        color: #000;
+        font-family: Gilroy-Bold;
+        font-size: 1.5rem;
+    }
+
+    .invoice-summary-end {
+        font-weight: bold;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        color: #0c6775;
+        text-align: left;
+        padding: 0;
+        font-family: Gilroy-Bold;
+    }
+
+    .invoice-summary-arabic {
+        font-weight: bold;
+        font-size: 0.9rem;
+        font-family: RedexPro;
+        color: #0c6775;
+        text-align: right;
+        padding: 0;
+    }
+
+    .tbl-invoice-dtl {
+        width: 100%;
+        font-size: 0.7rem;
+        table-layout: fixed;
+        margin-top: 10px;
+    }
+}

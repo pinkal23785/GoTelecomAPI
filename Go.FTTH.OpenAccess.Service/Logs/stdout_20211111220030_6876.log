@@ -1,0 +1,25 @@
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Development
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: D:\GoRepo\HyperPaySolution\Go.Service.Solution\Go.FTTH.OpenAccess.Service
+fail: Microsoft.EntityFrameworkCore.Database.Command[0]
+      2021-11-12 03:31:37.295796 ThreadID:4   (ERROR)   OracleRelationalCommand.ExecuteNonQuery() :  System.ArgumentException: Invalid parameter binding (Parameter 'piv_account_id')
+         at OracleInternal.ServiceObjects.OracleCommandImpl.GetBindByPositionBasedParameterCollection(OracleParameterCollection orclParamColl, ArrayList placeHolderCollection, Boolean bXmlQuerySave)
+         at OracleInternal.ServiceObjects.OracleCommandImpl.ExecuteNonQuery(String commandText, OracleParameterCollection paramColl, CommandType commandType, OracleConnectionImpl connectionImpl, Int32 longFetchSize, Int64 clientInitialLOBFS, OracleDependencyImpl orclDependencyImpl, Int64[]& scnFromExecution, OracleParameterCollection& bindByPositionParamColl, Boolean& bBindParamPresent, OracleException& exceptionForArrayBindDML, OracleConnection connection, OracleLogicalTransaction& oracleLogicalTransaction, Boolean isFromEF)
+         at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteNonQuery()
+         at Oracle.EntityFrameworkCore.Storage.Internal.OracleRelationalCommandBuilderFactory.OracleRelationalCommandBuilder.OracleRelationalCommand.ExecuteNonQuery(RelationalCommandParameterObject parameterObject)
+fail: Microsoft.EntityFrameworkCore.Database.Command[20102]
+      Failed executing DbCommand (713ms) [Parameters=[piv_account_id ='?', piv_order_id='?' (Size = 50) (Direction = Output), piv_sub_id='?' (Size = 50) (Direction = Output), piv_operator_id='?' (Size = 50) (Direction = Output), piv_region='?' (Size = 50) (Direction = Output), piv_city='?' (Size = 50) (Direction = Output), piv_district='?' (Size = 50) (Direction = Output), piv_serial_number='?' (Size = 50) (Direction = Output), piv_macid='?' (Size = 50) (Direction = Output), piv_operator_ref='?' (Size = 50) (Direction = Output), piv_odb_id='?' (Size = 50) (Direction = Output), piv_cust_id='?' (Size = 50) (Direction = Output), piv_contact_no='?' (Size = 50) (Direction = Output), piv_circuit_id='?' (Size = 50) (Direction = Output), pov_status='?' (Size = 50) (Direction = Output)], CommandType='Text', CommandTimeout='600']
+      BEGIN PKG_FTTH.prc_ticket_details(:piv_account_id, :piv_order_id, :piv_sub_id, :piv_operator_id,:piv_region,:piv_city,:piv_district,:piv_serial_number,:piv_macid,:piv_operator_ref,:piv_odb_id,:piv_cust_id,:piv_contact_no,:piv_circuit_id,:pov_status);END;
+fail: Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware[1]
+      An unhandled exception has occurred while executing the request.
+System.ArgumentException: Invalid parameter binding (Parameter 'piv_account_id')
+   at Go.FTTH.OpenAccess.Service.Controllers.CustomerController.GetOperatorDetails(String AccountId) in D:\GoRepo\HyperPaySolution\Go.Service.Solution\Go.FTTH.OpenAccess.Service\Controllers\CustomerController.cs:line 54
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.Contr

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Template>
+	<English>Dear Customer,
+A SADAD bill has been raised of SAR {0} for purchasing AYWA Card.
+To pay use invoice# {1} and  GO’s Biller Code 033 
+</English>
+
+
+<Arabic>عزيزي العميل، تم رفع فاتورة سداد بمبلغ {0} ريال لشراء بطاقة أيوا. للدفع استخدم رقم الفاتورة {1} ورقم سداد "جو" 033 </Arabic>
+
+</Template>

@@ -1,0 +1,318 @@
+﻿@{
+    Layout = null;
+}
+@model CheckoutModel;
+
+<div id="complex-ajax">
+    @Html.Partial("_PartialHeader")
+    <div class="d-flex justify-content-center align-items-center">
+        <div class="d-flex justify-content-center align-items-center">
+            @if (Model.Lang == "en")
+            {
+                <ul class="steps">
+                    <li class="step step-success">
+                        <a asp-action="Home" asp-controller="Aywa" asp-route-Lang="@Model.Lang">
+
+                            <div class="step-content">
+                                <span class="step-circle">1</span>
+                                <span class="step-text">Choose Card</span>
+                            </div>
+
+                        </a>
+                    </li>
+                    <li class="step step-success">
+                        <a asp-action="GetCardDetails" asp-controller="Aywa" data-ajax="true"
+                           data-ajax-loading="#loader" data-ajax-update="#complex-ajax" asp-route-Lang="@Model.Lang" asp-route-CardType="@Model.AywaaCardID">
+                            <div class="step-content">
+                                <span class="step-circle">2</span>
+                                <span class="step-text">View Card Details</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="step step-success">
+                        <a asp-action="Index" asp-controller="Aywa" asp-route-Lang="@Model.Lang" asp-route-CardAmount="@Model.Amount"
+                           asp-route-AwayaCardType="@Model.AywaaCardID"
+                           data-ajax="true"
+                           data-ajax-loading="#loader" data-ajax-update="#complex-ajax">
+                            <div class="step-content">
+                                <span class="step-circle">3</span>
+                                <span class="step-text">Verification</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="step step-active">
+
+                        <div class="step-content">
+                            <span class="step-circle">4</span>
+                            <span class="step-text">Pay</span>
+                        </div>
+
+                    </li>
+                    <li class="step">
+                        <div class="step-content">
+                            <span class="step-circle">5</span>
+                            <span class="step-text">Thank You</span>
+                        </div>
+                    </li>
+                </ul>
+            }
+            else
+            {
+                <ul class="steps fontArabic">
+                    <li class="step">
+                        <div class="step-content">
+                            <span class="step-circle">5</span>
+                            <span class="step-text">شكرا لك </span>
+                        </div>
+                    </li>
+                    <li class="step step-active">
+                        <div class="step-content">
+                            <span class="step-circle">4</span>
+                            <span class="step-text">الدفع</span>
+                        </div>
+                    </li>
+                    <li class="step step-success ">
+                        <a asp-action="Index" asp-controller="Aywa" asp-route-Lang="@Model.Lang" asp-route-CardAmount="@Model.Amount"
+                           asp-route-AwayaCardType="@Model.AywaaCardID"
+                           data-ajax="true"
+                           data-ajax-loading="#loader" data-ajax-update="#complex-ajax">
+                            <div class="step-content">
+                                <span class="step-circle">3</span>
+                                <span class="step-text">تحقق</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="step step-success">
+                        <a asp-action="GetCardDetails" asp-controller="Aywa" data-ajax="true"
+                           data-ajax-loading="#loader" data-ajax-update="#complex-ajax" asp-route-Lang="@Model.Lang" asp-route-CardType="@Model.AywaaCardID">
+                            <div class="step-content">
+                                <span class="step-circle">2</span>
+                                <span class="step-text">معلومات البطاقة </span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="step step-success">
+                        <a asp-action="Home" asp-controller="Aywa" asp-route-Lang="@Model.Lang">
+                            <div class="step-content">
+                                <span class="step-circle">1</span>
+                                <span class="step-text">اختر البطاقة</span>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            }
+        </div>
+    </div>
+    <div class="d-flex flex-wrap justify-content-center  mt-3">
+        <div class="text-center otp-title mt-3" style="flex-basis:100%;">
+            @(Model.Lang=="en"?"Payment Details":"بيانات عملية الدفع")
+        </div>
+        <form asp-controller="Aywa" asp-action="CheckoutHyperPay" class="form-group payment-form pt-3 w-42"
+              data-ajax="true" data-ajax-method="post"
+              data-ajax-loading="#loader" data-ajax-update="#complex-ajax">
+            <div class="form-row payment-row">
+                @{
+                    string cssClass = Model.Lang == "en" ? "form-control payment-input" : "form-control payment-input text-right";
+                    string firstNameText = Model.Lang == "en" ? "First Name" : "الاسم الاول";
+                    string lastNameText = Model.Lang == "en" ? "Last Name" : "اسم العائلة";
+                    string stateText = Model.Lang == "en" ? "State" : "الدولة";
+                    string cityText = Model.Lang == "en" ? "City" : "المدينة";
+                    string addressText = Model.Lang == "en" ? "Address" : "العنوان";
+                    string pincodeText = Model.Lang == "en" ? "Pincode" : "الرمز السري";
+                }
+                <div asp-validation-summary="ModelOnly" class="form-group col-md-12">
+                    <span>Please correct the following errors</span>
+                </div>
+                <div class="form-group col-md-12">
+                    @*<label for="FirstName" class="payment-label">First Name</label>*@
+                    @Html.TextBoxFor(model => model.FirstName, new { @class = @cssClass, @placeholder = @firstNameText })
+                    @*<span asp-validation-for="FirstName"></span>*@
+                    @if (Model.Lang == "en")
+                    {
+                        <span asp-validation-for="FirstName" class="field-validation-valid">First Name is required</span>
+                    }
+                    else
+                    {
+                        <span class="d-flex flex-column-reverse text-right field-validation-valid">
+                            <span asp-validation-for="FirstName" class="field-validation-valid">
+                                الإسم الأول مطلوب
+                            </span>
+                        </span>
+                    }
+
+                </div>
+                <div class="form-group col-md-12">
+                    @*<label for="LastName" class="payment-label">Last Name</label>*@
+                    @Html.TextBoxFor(model => model.LastName, new { @class = @cssClass, @placeholder = @lastNameText })
+                    @if (Model.Lang == "en")
+                    {
+                        <span asp-validation-for="LastName" class="field-validation-valid">Last Name is required</span>
+                    }
+                    else
+                    {
+                        <span class="d-flex flex-column-reverse text-right field-validation-valid">
+                            <span asp-validation-for="LastName" class="field-validation-valid">
+                                إسم العائلة مطلوب
+                            </span>
+                        </span>
+                    }
+                </div>
+                @Html.HiddenFor(model => model.MobileNumber)
+                @Html.HiddenFor(model => model.Email)
+                @Html.HiddenFor(model => model.Lang)
+                @*<div class="form-group col-md-6">
+                    
+                    @Html.TextBoxFor(model => model.State, new { @class = @cssClass, @placeholder = @stateText, @Text="Riyadh" })
+                    @if (Model.Lang == "en")
+                    {
+                        <span asp-validation-for="State" class="field-validation-valid">State is required</span>
+                    }
+                    else
+                    {
+                        <span class="d-flex flex-column-reverse text-right field-validation-valid">
+                            <span asp-validation-for="State" class="field-validation-valid">
+                                الدولة مطلوبة
+                            </span>
+                        </span>
+                    }
+                </div>*@
+                <div class="form-group col-md-12">
+                    @*<label for="City" class="payment-label">City</label>*@
+                    @Html.TextBoxFor(model => model.City, new { @class = @cssClass, @placeholder = @cityText })
+                    @if (Model.Lang == "en")
+                    {
+                        <span asp-validation-for="City" class="field-validation-valid">City is required</span>
+                    }
+                    else
+                    {
+                        <span class="d-flex flex-column-reverse text-right field-validation-valid">
+                            <span asp-validation-for="City" class="field-validation-valid">
+                                المدينة مطلوبة
+                            </span>
+                        </span>
+                    }
+                </div>
+                @*<div class="form-group col-md-6">
+                    @Html.TextBoxFor(model => model.StreetAddress, new { @class = @cssClass, @placeholder = @addressText })
+                    @if (Model.Lang == "en")
+                    {
+                        <span asp-validation-for="StreetAddress" class="field-validation-valid">Address is required</span>
+                    }
+                    else
+                    {
+                        <span class="d-flex flex-column-reverse text-right field-validation-valid">
+                            <span asp-validation-for="StreetAddress" class="field-validation-valid">
+                                العنوان مطلوب
+                            </span>
+                        </span>
+                    }
+                </div>*@
+                @*<div class="form-group col-md-6">
+                    @Html.TextBoxFor(model => model.PinCode, new { @class = @cssClass, @placeholder = @pincodeText })
+                    @if (Model.Lang == "en")
+                    {
+                        <span asp-validation-for="PinCode" class="field-validation-valid">Pincode is required</span>
+                    }
+                    else
+                    {
+                        <span class="d-flex flex-column-reverse text-right field-validation-valid">
+                            <span asp-validation-for="PinCode" class="field-validation-valid">
+                                الرمز السري مطلوب
+                            </span>
+                        </span>
+                    }
+                </div>*@
+                <div class="form-group col-md-12">
+                    <label for="" class="@(Model.Lang=="en"?"payment-label":"payment-label text-right w-100")">@(Model.Lang=="en"?"Payment Method":"اختر طريقة الدفع")</label>
+                    <div>
+                        <img id="visa" src="~/images/visa_logo_8.gif" class="img-thumbnail img-payment-card" onclick="javascript: selectCard(this);" />
+                        <img id="master" src="~/images/mastercard_logo_7.jpg" class="img-thumbnail img-payment-card" onclick="javascript: selectCard(this);" />
+                        <img id="mada" src="~/images/mada.png" class="img-thumbnail img-payment-card" onclick="javascript: selectCard(this);" />
+                        <img id="sadad" src="~/images/sadad.png" class="img-thumbnail img-payment-card" onclick="javascript: selectCard(this);" />
+                        @Html.HiddenFor(model => model.CardType)
+                        <br />
+                        @if (Model.Lang == "en")
+                        {
+                            <span asp-validation-for="CardType" class="field-validation-valid">Please select card type</span>
+                        }
+                        else
+                        {
+                            <span class="d-flex flex-column-reverse text-right field-validation-valid">
+                                <span asp-validation-for="CardType" class="field-validation-valid">
+                                    الرجاء تحديد نوع البطاقة
+                                </span>
+                            </span>
+                        }
+                        @*<div asp-validation-summary="All" class="text-danger"></div>*@
+                    </div>
+                </div>
+                <div class="form-group col-md-12 d-flex flex-column justify-content-center">
+                    @Html.HiddenFor(model => model.AywaaCardID)
+                    @Html.HiddenFor(model => model.Amount)
+                    <input type="submit" title="Continue Payment" value="@(Model.Lang=="en"?"Continue Payment":"تابع لإكمال الدفع")" class="btn btn-primary" />
+                    @*@{
+                                 var parms = new Dictionary<string, string>
+                                 {
+                                        { "Lang", Model.Lang },
+                                        {"CardAmount",Model.CardAmount},
+                                        {"AwayaCardType",Model.CardAmount}
+                                 };
+                        }*@
+
+                    <a asp-action="Index" asp-controller="Aywa" asp-route-Lang="@Model.Lang" asp-route-CardAmount="@Model.Amount"
+                       asp-route-AwayaCardType="@Model.AywaaCardID"
+                       data-ajax="true"
+                       data-ajax-loading="#loader" data-ajax-update="#complex-ajax" class="btn-link text-center mt-3">@(Model.Lang=="en"?"Back":"رجوع")</a>
+
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+    <script>
+        function validateCards(event) {
+            if ($("#CardType").val() == "") {
+                $("#errorCard").css("display", "block")
+                event.preventDefault();
+                return false;
+            }
+        }
+        function selectCard(obj) {
+            $("#errorCard").css("display", "none");
+            if ($(obj).attr("id") == "visa") {
+                $("#CardType").val("visa");
+                $("#visa").addClass("selected");
+                $("#master").removeClass("selected");
+                $("#mada").removeClass("selected");
+                $("#sadad").removeClass("selected");
+
+            }
+            else if ($(obj).attr("id") == "master") {
+                $("#CardType").val("master");
+                $("#master").addClass("selected");
+                $("#visa").removeClass("selected");
+                $("#mada").removeClass("selected");
+                $("#sadad").removeClass("selected");
+
+            }
+            else if ($(obj).attr("id") == "mada") {
+                $("#CardType").val("mada");
+                $("#mada").addClass("selected");
+                $("#master").removeClass("selected");
+                $("#visa").removeClass("selected");
+                $("#sadad").removeClass("selected");
+
+            }
+            else if ($(obj).attr("id") == "sadad") {
+                $("#CardType").val("sadad");
+
+                $("#sadad").addClass("selected");
+                $("#master").removeClass("selected");
+                $("#mada").removeClass("selected");
+                $("#visa").removeClass("selected");
+
+            }
+        }
+    </script>
+</div>
